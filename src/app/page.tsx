@@ -51,11 +51,13 @@ export default function Home() {
               className="text-foreground desktop:text-8xl"
               direction="up"
               text={words1.map((word) => word.text).join(" ")}
+              mode="word"
             />
             <WaveReveal
               className="text-foreground ml-44 desktop:text-8xl mt-8"
               direction="up"
               text={words2.map((word) => word.text).join(" ")}
+              mode="word"
             />
           </div>
 
@@ -67,11 +69,13 @@ export default function Home() {
               className="max-w-2xl text-left tracking-tight font-semibold text-black dark:text-white text-xl md:text-2xl"
               direction="up"
               text="Cyslabs is a cybersecurity squad keeping"
+              mode="word"
             />
             <WaveReveal
               className="max-w-2xl text-left tracking-tight font-semibold text-black dark:text-white text-xl md:text-2xl"
               direction="up"
               text="data and privacy safe #StaySecure #CyberSquad"
+              mode="word"
             />
             <div className="flex flex-row gap-4 mt-4 font-semibold">
               <SwipeButton

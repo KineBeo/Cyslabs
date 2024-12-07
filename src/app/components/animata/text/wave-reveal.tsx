@@ -76,7 +76,7 @@ const Word = ({
 
   return (
     <>
-      {Array.from(word).map((letter, letterIndex) => {
+      {word.split("").map((letter, letterIndex) => {
         return (
           <span
             key={`${letter}_${letterIndex}_${index}`}
@@ -165,7 +165,7 @@ const createAnimatedNodes = (args: ReducedValue, word: string, index: number): R
   return {
     ...args,
     nodes: [...nodes, node],
-    offset: offset + (isWordMode ? 1 : Array.from(word).length + 1),
+    offset: offset + (isWordMode ? 1 : word.length + 1),
   };
 };
 
@@ -183,7 +183,7 @@ export default function WaveReveal({
     return null;
   }
 
-  const words = text.split(/(?<=\S)(?=\s)|(?<=\s)(?=\S)/);
+  const words = text.trim().split(/\s/);
 
   const { nodes } = words.reduce<ReducedValue>(createAnimatedNodes, {
     nodes: [],
@@ -201,7 +201,7 @@ export default function WaveReveal({
   return (
     <div
       className={cn(
-        "relative flex flex-wrap whitespace-pre px-2 text-4xl font-black md:px-6q",
+        "relative flex flex-wrap whitespace-pre text-4xl font-black md:text-7xl",
         className,
       )}
     >
