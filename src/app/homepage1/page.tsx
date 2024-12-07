@@ -9,15 +9,6 @@ import Link from "next/link";
 import { cn } from "@/src/lib/utils";
 
 export default function FeaturesSectionDemo() {
-  const features = [
-    {
-      title: "Deploy in seconds",
-      description:
-        "With our blazing fast, state of the art, cutting edge, we are so back cloud servies (read AWS) - you can deploy your model in seconds.",
-      skeleton: <SkeletonFour />,
-      className: "col-span-1 lg:col-span-3 border-b lg:border-none",
-    },
-  ];
   return (
     <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       {/* <div className="px-8">
@@ -41,42 +32,6 @@ export default function FeaturesSectionDemo() {
     </div>
   );
 }
-
-const FeatureCard = ({
-  children,
-  className,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn(`p-4 sm:p-8 relative overflow-hidden`, className)}>
-      {children}
-    </div>
-  );
-};
-
-const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <p className=" max-w-5xl mx-auto text-left tracking-tight text-black dark:text-white text-xl md:text-2xl md:leading-snug">
-      {children}
-    </p>
-  );
-};
-
-const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
-  return (
-    <p
-      className={cn(
-        "text-sm md:text-base  max-w-4xl text-left mx-auto",
-        "text-neutral-500 text-center font-normal dark:text-neutral-300",
-        "text-left max-w-sm mx-0 md:text-sm my-2"
-      )}
-    >
-      {children}
-    </p>
-  );
-};
 
 export const SkeletonOne = () => {
   return (
