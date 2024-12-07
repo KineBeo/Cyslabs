@@ -1,25 +1,111 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { AuroraBackground } from "./components/ui/aurora-background";
+import { TypewriterEffectSmooth } from "./components/ui/typewriter-effect";
+import WaveReveal from "./components/animata/text/wave-reveal";
+import SwipeButton from "./components/animata/button/swipe-button";
 
-const World = dynamic(
-  () => import("@/src/app/components/ui/globe").then((m) => m.World),
-  {
-    ssr: false,
-  }
-);
+const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
+  ssr: false,
+});
 
-export default function GlobeDemo() {
+export default function Home() {
+  const words1 = [
+    {
+      text: "The",
+    },
+    {
+      text: "Coolest",
+    },
+    {
+      text: "Team",
+    },
+    {
+      text: "Of",
+    },
+  ];
+
+  const words2 = [
+    {
+      text: "CyberSecurity",
+    },
+    {
+      text: "Has",
+    },
+    {
+      text: "Arrived",
+    },
+  ]
+
+  return (
+
+    <div className="h-screen bg-black">
+      <div className="h-full w-full overflow-hidden relative">
+
+        <AuroraBackground numberOfStars={150} interactionRadius={150} repelStrength={0.8}>
+          <div className="z-10 top-44 absolute">
+
+            <WaveReveal
+              className="text-foreground desktop:text-8xl"
+              direction="up"
+              text={words1.map((word) => word.text).join(" ")}
+            />
+            <WaveReveal
+              className="text-foreground ml-44 desktop:text-8xl mt-8"
+              direction="up"
+              text={words2.map((word) => word.text).join(" ")}
+            />
+          </div>
+
+        </AuroraBackground>
+        <Globe className="absolute bottom-32 left-96" />
+        <div className="absolute bottom-72 right-40 z-20">
+          <div>
+            <WaveReveal
+              className="max-w-2xl text-left tracking-tight font-semibold text-black dark:text-white text-xl md:text-2xl"
+              direction="up"
+              text="Cyslabs is a cybersecurity squad keeping"
+            />
+            <WaveReveal
+              className="max-w-2xl text-left tracking-tight font-semibold text-black dark:text-white text-xl md:text-2xl"
+              direction="up"
+              text="data and privacy safe #StaySecure #CyberSquad"
+            />
+            <div className="flex flex-row gap-4 mt-4 font-semibold">
+              <SwipeButton
+                firstText="Join now"
+                secondText="Signup"
+                className="min-w-[150px]"
+                firstClass="bg-[#FEDC69] text-black"
+                secondClass="bg-[#FEDC69] text-black"
+              />
+              <SwipeButton
+                firstText="Join now"
+                secondText="Signup"
+                className="min-w-[150px]"
+                firstClass="bg-transparent text-white border border-white"
+                secondClass="bg-transparent text-white border border-white"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const Globe = ({ className }: { className?: string }) => {
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: "#0E4EB6",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
     emissive: "#062056",
     emissiveIntensity: 0.1,
-    shininess: 0.9,
+    shininess: 2.0,
     polygonColor: "rgba(255,255,255,0.7)",
     ambientLight: "#38bdf8",
     directionalLeftLight: "#ffffff",
@@ -28,10 +114,10 @@ export default function GlobeDemo() {
     arcTime: 1000,
     arcLength: 0.9,
     rings: 1,
-    maxRings: 3,
+    maxRings: 5,
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
-    autoRotateSpeed: 0.5,
+    autoRotateSpeed: 0.3,
   };
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
   const sampleArcs = [
@@ -396,36 +482,47 @@ export default function GlobeDemo() {
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
   ];
-
   return (
-    <div className="flex flex-row items-center justify-center py-20 h-screen md:h-auto dark:bg-black bg-white relative w-full">
-      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-          }}
-          className="div"
-        >
-          <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
-            We sell soap worldwide
-          </h2>
-          <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-            This globe is interactive and customizable. Have fun with it, and
-            don&apos;t forget to share it. :)
-          </p>
-        </motion.div>
-        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-        <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
-          <World data={sampleArcs} globeConfig={globeConfig} />
-        </div>
+    <div className={`max-w-3xl mx-auto w-full h-1/2 ${className}`}>
+      <div className="mobile:w-2/3 mobile:h-2/3 w-full h-full">
+        <World data={sampleArcs} globeConfig={globeConfig} />
+      </div>
+    </div>
+  );
+};
+
+export function HerosectionText() {
+  const words = [
+    {
+      text: "Build",
+    },
+    {
+      text: "awesome",
+    },
+    {
+      text: "apps",
+    },
+    {
+      text: "with",
+    },
+    {
+      text: "Aceternity.",
+      className: "text-blue-500 dark:text-blue-500",
+    },
+  ];
+  return (
+    <div className="flex flex-col items-center justify-center h-[40rem]  ">
+      <p className="text-neutral-600 dark:text-neutral-200 text-xs sm:text-base  ">
+        The road to freedom starts from here
+      </p>
+      <TypewriterEffectSmooth words={words} />
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
+        <button className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm">
+          Join now
+        </button>
+        <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
+          Signup
+        </button>
       </div>
     </div>
   );
