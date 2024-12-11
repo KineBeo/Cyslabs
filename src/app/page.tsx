@@ -3,6 +3,10 @@ import dynamic from "next/dynamic";
 import { AuroraBackground } from "./components/ui/aurora-background";
 import WaveReveal from "./components/animata/text/wave-reveal";
 import SwipeButton from "./components/animata/button/swipe-button";
+import { BoxesCore } from "./components/ui/background-boxes";
+import { TextGenerateEffect } from "./components/ui/text-generate-effect";
+import { text } from "stream/consumers";
+import FinalPage from "./components/page/FinalPage";
 
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
@@ -167,6 +171,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <FinalPage />
     </div>
   );
 }
