@@ -1,14 +1,18 @@
-"use client";;
+"use client";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { AuroraBackground } from "./components/ui/aurora-background";
 import SwipeButton from "./components/animata/button/swipe-button";
-import FinalPage from "./components/page/FinalPage";
+import Lenis from "lenis";
+import WhatWeDo from "./components/whatwedo";
 
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
 
 export default function Home() {
+    
+
   const words1 = [
     {
       text: "The",
@@ -35,9 +39,9 @@ export default function Home() {
       text: "Arrived",
     },
   ]
+   
 
   return (
-
     <div className="h-screen bg-black">
       <div className="h-full w-full overflow-hidden relative">
         <AuroraBackground>
@@ -77,9 +81,9 @@ export default function Home() {
               {words2.map((word) => word.text).join(" ")}
             </div>
           </div>
-
         </AuroraBackground>
-        <Globe className="absolute 
+        <Globe
+          className="absolute 
         mobile:bottom-24
         mobile:-left-32
         tablet:bottom-0
@@ -88,14 +92,18 @@ export default function Home() {
         laptop:bottom-0
         laptop:-left-12
         desktop:bottom-12 
-        desktop:left-96" />
-        <div className="absolute z-20 flex justify-center w-full
+        desktop:left-96"
+        />
+        <div
+          className="absolute z-20 flex justify-center w-full
         mobile:top-72
         tablet:top-80
         mini-laptop:top-80
         laptop:top-80
-        desktop:top-96">
-          <div className="absolute z-20
+        desktop:top-96"
+        >
+          <div
+            className="absolute z-20
           laptop:right-12
           laptop:top-16
           desktop:right-16
@@ -130,7 +138,8 @@ export default function Home() {
             mobile:justify-center
             tablet:justify-center
             mini-laptop:justify-center
-            ">
+            "
+            >
               <SwipeButton
                 firstText="Join now"
                 secondText="Signup"
@@ -157,6 +166,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <WhatWeDo />
     </div>
   );
 }
@@ -555,3 +565,4 @@ const Globe = ({ className }: { className?: string }) => {
     </div>
   );
 };
+
