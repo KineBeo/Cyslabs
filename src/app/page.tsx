@@ -172,7 +172,7 @@ export default function Home() {
         </div>
       </div>
 
-      <FinalPage />
+      {/* <FinalPage /> */}
     </div>
   );
 }

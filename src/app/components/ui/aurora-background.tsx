@@ -2,6 +2,8 @@
 import { cn } from "@/src/lib/utils";
 import React, { ReactNode } from "react";
 import { SparklesCore } from "../ui/sparkles";
+import { Overlay } from "../threejs/Overlay";
+import { Scene } from "../threejs/Scene";
 
 interface SpaceBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
@@ -24,7 +26,7 @@ export const AuroraBackground = ({
         {...props}
       >
         <div className="absolute inset-0 z-0 w-full h-full">
-          <SparklesCore
+          {/* <SparklesCore
             id="tsparticlesfullpage"
             background="transparent"
             minSize={0.6}
@@ -32,7 +34,12 @@ export const AuroraBackground = ({
             particleDensity={15}
             className="w-full h-full"
             particleColor="#FFFFFF"
-          />
+          /> */}
+          <div className="w-full h-screen relative bg-[#12071f] text-[#ddd] overflow-hidden">
+            <Scene />
+            <Overlay />
+            {/* <MacbookScene /> */}
+          </div>
         </div>
         <div className="absolute inset-0 overflow-hidden">
           <div
@@ -56,7 +63,7 @@ export const AuroraBackground = ({
               opacity-50
               will-change-transform`,
               showRadialGradient &&
-                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+              `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
             )}
           ></div>
         </div>
