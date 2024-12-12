@@ -26,19 +26,9 @@ export const AuroraBackground = ({
         {...props}
       >
         <div className="absolute inset-0 z-0 w-full h-full">
-          {/* <SparklesCore
-            id="tsparticlesfullpage"
-            background="transparent"
-            minSize={0.6}
-            maxSize={2.4}
-            particleDensity={15}
-            className="w-full h-full"
-            particleColor="#FFFFFF"
-          /> */}
-          <div className="w-full h-screen relative bg-[#12071f] text-[#ddd] overflow-hidden">
+          <div className="w-full h-screen relative text-[#ddd] overflow-hidden">
             <Scene />
             <Overlay />
-            {/* <MacbookScene /> */}
           </div>
         </div>
         <div className="absolute inset-0 overflow-hidden">

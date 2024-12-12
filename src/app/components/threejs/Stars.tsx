@@ -12,7 +12,7 @@ interface StarsProps {
 }
 
 export function Stars({ speed = 1, ...props }: StarsProps) {
-  const starsCount = 2000;
+  const starsCount = 2500;
   const ref = useRef<ThreePoints>(null!)
   const [sphere] = useState(() => random.inSphere(new Float32Array(starsCount), { radius: 1.5 }))
 
