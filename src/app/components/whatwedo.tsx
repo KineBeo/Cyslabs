@@ -113,7 +113,7 @@ function AnimatedServiceCard({
       if (!isLoaded) {
         // Initial state - fully visible but positioned
         await controls.set({
-          opacity: 50,
+          opacity: 100,
           y: 0,
         });
         return;
@@ -125,19 +125,19 @@ function AnimatedServiceCard({
           opacity: 1,
           y: 0,
           transition: {
-            duration: 0.7,
-            ease: "circInOut",
-            delay: index * 0.2, // Stagger effect
+            duration: 1.5,
+            ease: "backOut",
+            delay: index * 0.1, // Stagger effect
           },
         });
       } else {
         // Animate out when scrolling up/down out of view
         await controls.start({
           opacity: 0,
-          y: 100, // Increase distance for more pronounced effect
+          y: 200, // Increase distance for more pronounced effect
           transition: {
-            duration: 0.7,
-            ease: "circInOut",
+            duration: 1.5,
+            ease: "backOut",
           },
         });
       }
@@ -151,15 +151,15 @@ function AnimatedServiceCard({
       ref={ref}
       initial={{
         opacity: 0,
-        y: 50,
+        y: 0,
       }}
       animate={controls}
       exit={{
-        opacity: 0,
-        y: 100,
+        opacity: 100,
+        y: 0,
         transition: {
-          duration: 0.7,
-          ease: "circInOut",
+          duration: 1.5,
+          ease: "backOut",
         },
       }}
       className="bg-gray-900 p-6 rounded-lg shadow-lg transition-transform hover:scale-105 hover:bg-gray-800"
