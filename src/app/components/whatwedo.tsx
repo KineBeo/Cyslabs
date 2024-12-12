@@ -76,9 +76,9 @@ export default function WhatWeDo() {
   return (
     <ReactLenis root options={{lerp: 0.1, smoothWheel:true}}>
       <div className="min-h-screen bg-black text-white py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">What We Do</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="container mx-auto px-8">
+          <h2 className="text-4xl font-bold text-center my-12">What We Do</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <AnimatePresence>
               {services.map((service, index) => (
                 <AnimatedServiceCard 
@@ -113,7 +113,7 @@ function AnimatedServiceCard({
       if (!isLoaded) {
         // Initial state - fully visible but positioned
         await controls.set({
-          opacity: 100,
+          opacity: 50,
           y: 0,
         });
         return;
@@ -125,7 +125,7 @@ function AnimatedServiceCard({
           opacity: 1,
           y: 0,
           transition: {
-            duration: 1.5,
+            duration: 2,
             ease: "backOut",
             delay: index * 0.1, // Stagger effect
           },
@@ -136,7 +136,7 @@ function AnimatedServiceCard({
           opacity: 0,
           y: 200, // Increase distance for more pronounced effect
           transition: {
-            duration: 1.5,
+            duration: 2,
             ease: "backOut",
           },
         });
@@ -150,8 +150,8 @@ function AnimatedServiceCard({
     <motion.div
       ref={ref}
       initial={{
-        opacity: 0,
-        y: 0,
+        opacity: 1,
+        y: 200,
       }}
       animate={controls}
       exit={{
@@ -162,7 +162,7 @@ function AnimatedServiceCard({
           ease: "backOut",
         },
       }}
-      className="bg-gray-900 p-6 rounded-lg shadow-lg  hover:scale-105 hover:bg-gray-800"
+      className="bg-gray-900 p-6 rounded-3xl shadow-xl  hover:bg-gray-800"
     >
       <div className="text-4xl mb-4">{service.icon}</div>
       <h3 className="text-xl font-bold mb-2">{service.title}</h3>
