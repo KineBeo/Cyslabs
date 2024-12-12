@@ -162,7 +162,7 @@ function AnimatedServiceCard({
           ease: "backOut",
         },
       }}
-      className="bg-gray-900 p-6 rounded-lg shadow-lg transition-transform hover:scale-105 hover:bg-gray-800"
+      className="bg-gray-900 p-6 rounded-lg shadow-lg  hover:scale-105 hover:bg-gray-800"
     >
       <div className="text-4xl mb-4">{service.icon}</div>
       <h3 className="text-xl font-bold mb-2">{service.title}</h3>
