@@ -6,15 +6,28 @@ export default function FinalPage() {
     return (
         <div className="w-full h-full overflow-hidden relative">
             <BoxesCore />
-            <div className="absolute z-10 flex flex-col justify-center w-full
+            <div className="absolute z-10 flex flex-col w-full
         mobile:top-48
         tablet:top-40
-        mini-laptop:top-40 mini-laptop:left-16
+        mini-laptop:top-40 mini-laptop:left-20
         laptop:top-40 laptop:left-20
-        desktop:top-28 desktop:left-28 ">
-                <WaveReveal mode="word" direction="up" text="Join Now" />
+        desktop:top-40 desktop:left-28 ">
+                <WaveReveal mode="word" direction="up" text="Join Now"
+                    className="
+                    desktop:text-7xl
+                    laptop:text-6xl
+                    mini-laptop:text-5xl
+                    tablet:text-4xl
+                    mobile:text-3xl
+                "
+                />
                 <WaveReveal mode="word" direction="up" text="And see the power of"
                     className="
+                    desktop:text-7xl
+                    laptop:text-6xl
+                    mini-laptop:text-5xl
+                    tablet:text-4xl
+                    mobile:text-3xl
             desktop:ml-12
             laptop:ml-8
             mini-laptop:ml-8
@@ -22,6 +35,11 @@ export default function FinalPage() {
                 />
                 <WaveReveal mode="word" direction="up" text="Cybersecurity !"
                     className="
+                    desktop:text-7xl
+                    laptop:text-6xl
+                    mini-laptop:text-5xl
+                    tablet:text-4xl
+                    mobile:text-3xl
             desktop:ml-24
             laptop:ml-16
             mini-laptop:ml-16
@@ -37,7 +55,7 @@ export default function FinalPage() {
         "
             >
                 <WaveReveal mode="word" direction="up"
-                    text="The DeSo blockchain is supported by the DeSo Foundation, whose broad mission is to support the decentralization of social media.."
+                    text="The DeSo blockchain is supported by the DeSo Foundation, whose broad mission is to support the decentralization of social media."
                     className="font-semibold text-black dark:text-white
                     mobile:text-xl mobile:justify-center mobile:text-justify
                     tablet:text-xl
@@ -50,7 +68,7 @@ export default function FinalPage() {
             <div className="absolute z-20 flex 
                             mobile:px-8 mobile:top-[120rem]
                             tablet:px-16 tablet:top-[120rem]
-                            mini-laptop:bottom-48 mini-laptop:left-96 mini-laptop:pr-8
+                            mini-laptop:bottom-40 mini-laptop:left-96 mini-laptop:pr-8
                             laptop:bottom-48 laptop:left-96 laptop:pr-12
                             desktop:bottom-24 desktop:left-[50%] desktop:pr-24  
         "
