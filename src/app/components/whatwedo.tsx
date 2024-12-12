@@ -126,7 +126,7 @@ function AnimatedServiceCard({
           y: 0,
           transition: {
             duration: 0.7,
-            ease: "easeOut",
+            ease: "circInOut",
             delay: index * 0.2, // Stagger effect
           },
         });
@@ -137,7 +137,7 @@ function AnimatedServiceCard({
           y: 100, // Increase distance for more pronounced effect
           transition: {
             duration: 0.7,
-            ease: "easeIn",
+            ease: "circInOut",
           },
         });
       }
@@ -158,8 +158,8 @@ function AnimatedServiceCard({
         opacity: 0,
         y: 100,
         transition: {
-          duration: 0.5,
-          ease: "easeIn",
+          duration: 0.7,
+          ease: "circInOut",
         },
       }}
       className="bg-gray-900 p-6 rounded-lg shadow-lg transition-transform hover:scale-105 hover:bg-gray-800"
