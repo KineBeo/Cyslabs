@@ -12,15 +12,15 @@ export default function FinalPage() {
         mini-laptop:top-40 mini-laptop:left-16
         laptop:top-40 laptop:left-20
         desktop:top-28 desktop:left-28 ">
-                <TextGenerateEffect words="Join Now" />
-                <TextGenerateEffect words="And see the power of"
+                <WaveReveal mode="word" direction="up" text="Join Now" />
+                <WaveReveal mode="word" direction="up" text="And see the power of"
                     className="
             desktop:ml-12
             laptop:ml-8
             mini-laptop:ml-8
             "
                 />
-                <TextGenerateEffect words="Cybersecurity !"
+                <WaveReveal mode="word" direction="up" text="Cybersecurity !"
                     className="
             desktop:ml-24
             laptop:ml-16
@@ -37,13 +37,32 @@ export default function FinalPage() {
         "
             >
                 <WaveReveal mode="word" direction="up"
-                    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+                    text="The DeSo blockchain is supported by the DeSo Foundation, whose broad mission is to support the decentralization of social media.."
                     className="font-semibold text-black dark:text-white
-          mobile:text-xl mobile:justify-center mobile:text-justify
-          tablet:text-xl
-          mini-laptop:text-xl mini-laptop:justify-normal
-          laptop:text-xl laptop:justify-normal
-          desktop:text-2xl desktop:justify-normal
+                    mobile:text-xl mobile:justify-center mobile:text-justify
+                    tablet:text-xl
+                    mini-laptop:text-xl mini-laptop:justify-normal
+                    laptop:text-xl laptop:justify-normal
+                    desktop:text-2xl desktop:justify-normal
+          "
+                />
+            </div>
+            <div className="absolute z-20 flex 
+                            mobile:px-8 mobile:top-[120rem]
+                            tablet:px-16 tablet:top-[120rem]
+                            mini-laptop:bottom-48 mini-laptop:left-96 mini-laptop:pr-8
+                            laptop:bottom-48 laptop:left-96 laptop:pr-12
+                            desktop:bottom-24 desktop:left-[50%] desktop:pr-24  
+        "
+            >
+                <WaveReveal mode="word" direction="up"
+                    text="The foundation is led by crypto veteran Nader Al-Naji (@nader, @nadertheory), with a $200 million treasury behind it to support its mission."
+                    className="font-semibold text-black dark:text-white
+                    mobile:text-xl mobile:justify-center mobile:text-justify
+                    tablet:text-xl
+                    mini-laptop:text-xl mini-laptop:justify-normal
+                    laptop:text-xl laptop:justify-normal
+                    desktop:text-2xl desktop:justify-normal
           "
                 />
             </div>

@@ -45,7 +45,7 @@ export default function Home() {
     <div className="h-screen bg-black">
       <div className="h-full w-full overflow-hidden relative">
 
-        <AuroraBackground numberOfStars={150} interactionRadius={150} repelStrength={0.8}>
+        <AuroraBackground>
           <div className="absolute z-10  
           mobile:top-44
           tablet:top-48
