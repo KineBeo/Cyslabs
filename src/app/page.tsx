@@ -2,10 +2,8 @@
 import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { AuroraBackground } from "./components/ui/aurora-background";
-import WaveReveal from "./components/animata/text/wave-reveal";
 import SwipeButton from "./components/animata/button/swipe-button";
 import Lenis from "lenis";
-
 import WhatWeDo from "./components/whatwedo";
 
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
@@ -46,21 +44,15 @@ export default function Home() {
   return (
     <div className="h-screen bg-black">
       <div className="h-full w-full overflow-hidden relative">
-        <AuroraBackground
-          numberOfStars={150}
-          interactionRadius={150}
-          repelStrength={0.8}
-        >
-          <div
-            className="absolute z-10  
+        <AuroraBackground>
+          <div className="absolute z-10  
           mobile:top-44
           tablet:top-48
           mini-laptop:top-52 
           laptop:top-56
-          desktop:top-48"
-          >
-            <WaveReveal
-              className="text-foreground 
+          desktop:top-48">
+
+            <div className="text-foreground 
               mobile:text-3xl
               mobile:justify-center
               tablet:text-3xl
@@ -69,13 +61,12 @@ export default function Home() {
               laptop:text-6xl
               laptop:justify-start
               desktop:text-8xl
-              desktop:justify-start"
-              direction="up"
-              text={words1.map((word) => word.text).join(" ")}
-              mode="word"
-            />
-            <WaveReveal
-              className="text-foreground 
+              desktop:justify-star
+               font-bold">
+              {words1.map((word) => word.text).join(" ")}
+            </div>
+            <div className="text-foreground 
+            font-bold
               mobile:text-2xl
               mobile:justify-center
               tablet:text-3xl
@@ -86,11 +77,9 @@ export default function Home() {
               laptop:ml-32
               desktop:ml-52  
               mobile:mt-2
-              desktop:mt-8"
-              direction="up"
-              text={words2.map((word) => word.text).join(" ")}
-              mode="word"
-            />
+              desktop:mt-6">
+              {words2.map((word) => word.text).join(" ")}
+            </div>
           </div>
         </AuroraBackground>
         <Globe
@@ -119,10 +108,21 @@ export default function Home() {
           laptop:top-16
           desktop:right-16
           desktop:top-16
-          "
-          >
-            <WaveReveal
-              className="font-semibold text-black dark:text-white 
+          ">
+            <div className="font-semibold text-black dark:text-white 
+              mobile:text-lg
+              mobile:justify-center
+              mobile:text-center
+              tablet:text-xl
+              mini-laptop:text-2xl
+              laptop:text-3xl
+              laptop:justify-start
+              desktop:text-3xl
+              desktop:justify-start
+              text-2xl">
+              Cyslabs is a cybersecurity squad keeping
+            </div>
+            <div className="font-semibold text-black dark:text-white 
               mobile:text-lg
               mobile:justify-center
               tablet:text-xl
@@ -131,28 +131,10 @@ export default function Home() {
               laptop:justify-start
               desktop:text-3xl
               desktop:justify-start
-              text-2xl "
-              direction="up"
-              text="Cyslabs is a cybersecurity squad keeping"
-              mode="word"
-            />
-            <WaveReveal
-              className="font-semibold text-black dark:text-white 
-              mobile:text-lg
-              mobile:justify-center
-              tablet:text-xl
-              mini-laptop:text-2xl
-              laptop:text-3xl
-              laptop:justify-start
-              desktop:text-3xl
-              desktop:justify-start
-              text-2xl "
-              direction="up"
-              text="data and privacy safe #StaySecure #CyberSquad"
-              mode="word"
-            />
-            <div
-              className="flex flex-row gap-4 mt-4 font-semibold
+              text-2xl">
+              data and privacy safe #StaySecure #CyberSquad
+            </div>
+            <div className="flex flex-row gap-4 mt-4 font-semibold
             mobile:justify-center
             tablet:justify-center
             mini-laptop:justify-center
