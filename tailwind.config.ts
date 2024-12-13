@@ -63,6 +63,7 @@ const config: Config = {
       
       animation: {
         aurora: "aurora 45s ease-in-out infinite",
+        "meteor-effect": "meteor 5s linear infinite",
       }, 
       transitionTimingFunction: {
         "minor-spring": "cubic-bezier(0.18,0.89,0.82,1.04)",
@@ -78,7 +79,6 @@ const config: Config = {
           '100%': {
             backgroundPosition: '0% 50%',
           },
-          
         },
         "reveal-up": {
           "0%": { opacity: "0", transform: "translateY(80%)" },
@@ -91,6 +91,14 @@ const config: Config = {
           "content-blur": {
           "0%": { filter: "blur(0.3rem)" },
           "100%": { filter: "blur(0)" },
+        },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
         },
       },
       screens: {

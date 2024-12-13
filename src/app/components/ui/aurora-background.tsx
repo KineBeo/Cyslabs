@@ -1,148 +1,21 @@
 "use client";
 import { cn } from "@/src/lib/utils";
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode } from "react";
+import { SparklesCore } from "../ui/sparkles";
+import { Overlay } from "../threejs/Overlay";
+import { Scene } from "../threejs/Scene";
 
 interface SpaceBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
   showRadialGradient?: boolean;
-  numberOfStars?: number;
-  interactionRadius?: number;
-  repelStrength?: number;
 }
 
 export const AuroraBackground = ({
   className,
   children,
   showRadialGradient = true,
-  numberOfStars = 100,
-  interactionRadius = 100,
-  repelStrength = 0.5,
   ...props
 }: SpaceBackgroundProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Set canvas size to match window size
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    // Handle mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      };
-    };
-    canvas.addEventListener("mousemove", handleMouseMove);
-
-    // Star particle class
-    class Star {
-      x: number;
-      y: number;
-      size: number;
-      opacity: number;
-      speed: number;
-      twinkleSpeed: number;
-      originalX: number;
-      originalY: number;
-      velocityX: number;
-      velocityY: number;
-
-      constructor() {
-        this.x = Math.random() * (canvas?.width || 0);
-        this.y = Math.random() * (canvas?.height || 0);
-        this.originalX = this.x;
-        this.originalY = this.y;
-        this.size = Math.random() * 2;
-        this.opacity = Math.random();
-        this.speed = 0.1 + Math.random() * 2.0;
-        this.twinkleSpeed = 0.003 + Math.random() * 0.007;
-        this.velocityX = 0;
-        this.velocityY = 0;
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        ctx.fill();
-      }
-
-      update() {
-        // Twinkle effect
-        this.opacity += Math.sin(Date.now() * this.twinkleSpeed) * 0.01;
-        this.opacity = Math.max(0.2, Math.min(1, this.opacity));
-
-        // Calculate distance from mouse
-        const dx = this.x - mouseRef.current.x;
-        const dy = this.y - mouseRef.current.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        // Apply repulsion force if mouse is nearby
-        if (distance < interactionRadius) {
-          const force = (interactionRadius - distance) / interactionRadius;
-          this.velocityX += (dx / distance) * force * repelStrength;
-          this.velocityY += (dy / distance) * force * repelStrength;
-        }
-
-        // Apply return force to original position
-        const returnForce = 0.05;
-        this.velocityX += (this.originalX - this.x) * returnForce;
-        this.velocityY += (this.originalY - this.y) * returnForce;
-
-        // Apply friction
-        this.velocityX *= 0.95;
-        this.velocityY *= 0.95;
-
-        // Update position
-        this.x += this.velocityX;
-        this.y += this.velocityY;
-
-        // Slow upward movement
-        this.originalY += this.speed;
-        if (this.originalY > (canvas?.height || 0)) {
-          this.originalY = 0;
-          this.originalX = Math.random() * (canvas?.width || 0);
-          this.x = this.originalX;
-          this.y = this.originalY;
-        }
-      }
-    }
-
-    // Create stars
-    const stars = Array.from({ length: numberOfStars }, () => new Star());
-
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach((star) => {
-        star.update();
-        star.draw();
-      });
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [numberOfStars, interactionRadius, repelStrength]);
-
   return (
     <main>
       <div
@@ -152,7 +25,12 @@ export const AuroraBackground = ({
         )}
         {...props}
       >
-        <canvas ref={canvasRef} className="absolute inset-0 z-0" />
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <div className="w-full h-screen relative text-[#ddd] overflow-hidden">
+            <Scene />
+            <Overlay />
+          </div>
+        </div>
         <div className="absolute inset-0 overflow-hidden">
           <div
             className={cn(
@@ -175,7 +53,7 @@ export const AuroraBackground = ({
               opacity-50
               will-change-transform`,
               showRadialGradient &&
-                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+              `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
             )}
           ></div>
         </div>
