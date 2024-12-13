@@ -2,6 +2,7 @@ import Lenis from "lenis";
 import React, { useEffect, useRef, useState } from "react";
 import { ReactLenis } from "lenis/react";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
+import WhatWeDoBackground from "./ui/whatwedo-background";
 
 // Define the Service type
 interface Service {
@@ -74,24 +75,26 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <ReactLenis root options={{lerp: 0.1, smoothWheel:true}}>
-      <div className="min-h-screen bg-black text-white py-16">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl font-bold text-center my-12">What We Do</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <AnimatePresence>
-              {services.map((service, index) => (
-                <AnimatedServiceCard 
-                  key={index} 
-                  service={service} 
-                  index={index}
-                  isLoaded={isLoaded}
-                />
-              ))}
-            </AnimatePresence>
+    <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
+      <WhatWeDoBackground>
+        <div className="min-h-screen text-white py-16">
+          <div className="mx-auto px-8">
+            <h2 className="text-4xl font-bold text-center my-12" onClick={() => { console.log("niga") }}>What We Do</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <AnimatePresence>
+                {services.map((service, index) => (
+                  <AnimatedServiceCard
+                    key={index}
+                    service={service}
+                    index={index}
+                    isLoaded={isLoaded}
+                  />
+                ))}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
-      </div>
+      </WhatWeDoBackground>
     </ReactLenis>
   );
 }

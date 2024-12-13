@@ -5,13 +5,14 @@ import { AuroraBackground } from "./components/ui/aurora-background";
 import SwipeButton from "./components/animata/button/swipe-button";
 import Lenis from "lenis";
 import WhatWeDo from "./components/whatwedo";
+import WhatWeDoBackground from "./components/ui/whatwedo-background";
 
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
 
 export default function Home() {
-    
+
 
   const words1 = [
     {
@@ -39,7 +40,7 @@ export default function Home() {
       text: "Arrived",
     },
   ]
-   
+
 
   return (
     <div className="h-screen bg-black">
@@ -166,7 +167,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <WhatWeDo />
+      
+        <WhatWeDo />
+
     </div>
   );
 }
