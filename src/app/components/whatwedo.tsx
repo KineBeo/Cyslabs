@@ -76,7 +76,7 @@ export default function WhatWeDo() {
 
   return (
     <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
-      <WhatWeDoBackground>
+      <div className="">
         <div className="min-h-20 text-white py-16">
           <div className="mx-auto px-8">
             <h2 className="text-4xl font-bold text-center my-12" onClick={() => { console.log("niga") }}>What We Do</h2>
@@ -94,7 +94,7 @@ export default function WhatWeDo() {
             </div>
           </div>
         </div>
-      </WhatWeDoBackground>
+      </div>
     </ReactLenis>
   );
 }

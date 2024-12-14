@@ -5,6 +5,7 @@ import { AuroraBackground } from "./components/ui/aurora-background";
 import SwipeButton from "./components/animata/button/swipe-button";
 import WhatWeDo from "./components/whatwedo";
 import Customer from "./components/customer";
+import WhatWeDoBackground from "./components/ui/whatwedo-background";
 
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
@@ -177,8 +178,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <WhatWeDo />
-      <Customer />
+        <WhatWeDo />
+        <Customer />
     </div>
   );
 }
