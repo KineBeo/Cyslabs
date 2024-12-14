@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import ScrollingTestimonials from "./animata/container/scrolling-testimonials";
+
 
 // export default function Customer() {
 
@@ -43,14 +43,14 @@ import ScrollingTestimonials from "./animata/container/scrolling-testimonials";
 
 export default function Customer() {
   return (
-    <div className="grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 pb-40">
-      <div className="col-span-2">
-        <h2 className="text-4xl font-bold text-center my-10">Our products</h2>
+    <div className="min-h-screen mt-40 grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 pb-40 ">
+      <div className="col-span-2 flex flex-col items-start justify-start">
+        <h2 className="text-4xl font-bold text-start px-10 ">Our products</h2>
       </div>
       {/* product1  */}
       <div className="col-span-3 flex flex-col w-full ">
         <div
-          className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-2 
+          className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-4 
                     cursor-pointer 
                     relative 
                     transition-all 
@@ -71,11 +71,11 @@ export default function Customer() {
             <p className="group-hover:text-white">Website</p>
           </div>
         </div>
-        <div className="mx-20 mobile:mx-4 tablet:mx-4  px-2 bg-slate-500 h-0.5"></div>
+        <div className="mx-20 mobile:mx-4 tablet:mx-4  px-2  bg-slate-500 h-0.5"></div>
 
         {/* product2 */}
         <div
-          className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-2 
+          className="mx-20 mobile:mx-4 tablet:mx-4 px-4 py-4 
                     cursor-pointer 
                     relative 
                     transition-all 
@@ -96,11 +96,11 @@ export default function Customer() {
             <p className="group-hover:text-white">Website</p>
           </div>
         </div>
-        <div className="mx-20 mobile:mx-4 tablet:mx-4  px-2 bg-slate-500 h-0.5"></div>
+        <div className="mx-20 mobile:mx-4 tablet:mx-4   px-2 bg-slate-500 h-0.5"></div>
 
         {/* product3  */}
         <div
-          className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-2 
+          className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-4 
                     cursor-pointer 
                     relative 
                     transition-all 
@@ -121,7 +121,7 @@ export default function Customer() {
             <p className="group-hover:text-white">Website</p>
           </div>
         </div>
-        <div className="mx-20 mobile:mx-4 tablet:mx-4  px-2 bg-slate-500 h-0.5"></div>
+        <div className="mx-20 mobile:mx-4 tablet:mx-4 px-2 bg-slate-500 h-0.5"></div>
       </div>
     </div>
   );
