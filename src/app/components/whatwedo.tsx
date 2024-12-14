@@ -77,7 +77,7 @@ export default function WhatWeDo() {
   return (
     <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
       <WhatWeDoBackground className="">
-        <div className="min-h-screen text-white py-16">
+        <div className="min-h-screen h-fit text-white py-16">
           <div className="mx-auto px-8">
             <h2 className="text-4xl font-bold text-center my-12" onClick={() => { console.log("niga") }}>What We Do</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
