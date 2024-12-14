@@ -6,7 +6,7 @@ import SwipeButton from "./components/animata/button/swipe-button";
 import Lenis from "lenis";
 import WhatWeDo from "./components/whatwedo";
 import WhatWeDoBackground from "./components/ui/whatwedo-background";
-
+import Member from "./components/homepage/member";
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
@@ -169,7 +169,8 @@ export default function Home() {
       </div>
       
         <WhatWeDo />
-
+        <Member />
+        
     </div>
   );
 }
