@@ -63,10 +63,10 @@ export default function Customer() {
                     before:scale-y-0 
                     hover:before:scale-y-100 
                     before:transition-transform 
-                    before:duration-300 
+                    before:duration-500 
                     before:z-[-1]"
         >
-          <div className="flex justify-between relative z-10">
+          <div className="flex justify-between relative z-10 hover:px-2 transition-all">
             <p className="font-bold group-hover:text-white">Đông Y Ông Bụt</p>
             <p className="group-hover:text-white">Website</p>
           </div>
@@ -88,10 +88,10 @@ export default function Customer() {
                     before:scale-y-0 
                     hover:before:scale-y-100 
                     before:transition-transform 
-                    before:duration-300 
+                    before:duration-500 
                     before:z-[-1]"
         >
-          <div className="flex justify-between relative z-10">
+          <div className="flex justify-between relative z-10 hover:px-2 transition-all">
             <p className="font-bold group-hover:text-white">Đông Y Ông Bụt</p>
             <p className="group-hover:text-white">Website</p>
           </div>
@@ -99,7 +99,8 @@ export default function Customer() {
         <div className="mx-20 mobile:mx-4 tablet:mx-4  px-2 bg-slate-500 h-0.5"></div>
 
         {/* product3  */}
-        <div className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-2 
+        <div
+          className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-2 
                     cursor-pointer 
                     relative 
                     transition-all 
@@ -112,10 +113,10 @@ export default function Customer() {
                     before:scale-y-0 
                     hover:before:scale-y-100 
                     before:transition-transform 
-                    before:duration-300 
+                    before:duration-500 
                     before:z-[-1]"
         >
-          <div className="flex justify-between relative z-10">
+          <div className="flex justify-between relative z-10 hover:px-2 transition-all">
             <p className="font-bold group-hover:text-white">Đông Y Ông Bụt</p>
             <p className="group-hover:text-white">Website</p>
           </div>
