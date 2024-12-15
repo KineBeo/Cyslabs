@@ -2,7 +2,7 @@ import Lenis from "lenis";
 import React, { useEffect, useRef, useState } from "react";
 import { ReactLenis } from "lenis/react";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
-import WhatWeDoBackground from "./ui/whatwedo-background";
+import RandomStarBackground from "../ui/random-start-background";
 
 // Define the Service type
 interface Service {
@@ -76,10 +76,10 @@ export default function WhatWeDo() {
 
   return (
     <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
-      <WhatWeDoBackground>
-        <div className="min-h-screen text-white py-16">
-          <div className="mx-auto px-8">
-            <h2 className="text-4xl font-bold text-center my-12" onClick={() => { console.log("niga") }}>What We Do</h2>
+      <RandomStarBackground id="what-we-do">
+        <div className="h-screen text-white py-16 justify-center items-center flex">
+          <div className="mx-auto">
+            <h2 className="desktop:text-7xl font-bold text-center my-12">What We Do</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <AnimatePresence>
                 {services.map((service, index) => (
@@ -94,7 +94,7 @@ export default function WhatWeDo() {
             </div>
           </div>
         </div>
-      </WhatWeDoBackground>
+      </RandomStarBackground>
     </ReactLenis>
   );
 }
@@ -137,7 +137,7 @@ function AnimatedServiceCard({
         // Animate out when scrolling up/down out of view
         await controls.start({
           opacity: 0,
-          y: 200, // Increase distance for more pronounced effect
+          y: 100, // Increase distance for more pronounced effect
           transition: {
             duration: 2,
             ease: "backOut",
