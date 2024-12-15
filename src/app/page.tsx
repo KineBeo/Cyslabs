@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { AuroraBackground } from "./components/ui/aurora-background";
 import SwipeButton from "./components/animata/button/swipe-button";
-import WhatWeDo from "./components/whatwedo";
-import Customer from "./components/customer";
-import WhatWeDoBackground from "./components/ui/whatwedo-background";
+import WhatWeDo from "./components/homepage/whatwedo";
+import Customer from "./components/homepage/customer";
+import RandomStarBackground from "./components/ui/random-start-background";
 import Member from "./components/homepage/member";
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,

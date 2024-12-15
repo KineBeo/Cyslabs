@@ -66,8 +66,6 @@ const config: Config = {
         "marquee-vertical": "marquee-y var(--duration) linear infinite",
         aurora: "aurora 45s ease-in-out infinite",
         "meteor-effect": "meteor 5s linear infinite",
-        "marquee-horizontal": "marquee-x var(--duration) infinite linear",
-        "marquee-vertical": "marquee-y var(--duration) linear infinite",
       },
       transitionTimingFunction: {
         "minor-spring": "cubic-bezier(0.18,0.89,0.82,1.04)",
