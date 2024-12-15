@@ -19,10 +19,10 @@ function TestimonialCard({
 }) {
   return (
     <div
-      className="flex h-44 w-96 overflow-hidden rounded-xl border bg-background dark:border-zinc-700"
+      className="flex h-60 max-w-lg overflow-hidden rounded-xl border bg-background dark:border-zinc-700"
       key={name}
     >
-      <div className="relative h-full w-32 flex-shrink-0 overflow-hidden">
+      <div className="relative h-full w-48 flex-shrink-0 overflow-hidden">
         <img src={image} alt={name} className="h-full w-full object-cover" />
       </div>
       <div className="px-4 py-2">
@@ -33,13 +33,14 @@ function TestimonialCard({
         <span className="block text-sm text-foreground">{description} </span>
       </div>
     </div>
+    
   );
 }
 
 // Component cuộn testimonials
 export function ScrollingTestimonials({ data }: TestimonialProps) {
   return (
-    <div className="w-full overflow-hidden">
+    <div className=" w-full overflow-hidden">
       <Marquee className="[--duration:25s]" pauseOnHover applyMask={false}>
         {data.map((testimonial) => (
           <TestimonialCard key={testimonial.name} testimonial={testimonial} />
@@ -78,21 +79,22 @@ const Member = () => {
       description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum labore dolor facilis, nesciunt facere mollitia nam aspernatur!",
     },
   ];
-
+   
   return (
-    <div className="px-4 
-         desktop:px-20 
-         desktop:mt-0
-         tablet:pt-0
-         tablet:mt-52
-         mobile:pt-96 
-         mobile:mt-72 
-         mini-laptop:pt-0
-         mini-laptop:mt-2
-         laptop:pt-1
-         laptop:mt-1 ">
-      <div className="text-center my-8">
-        <h2 className="text-4xl font-bold text-center my-12">Meet the Cyslabs team</h2>
+    <div className="px-4 -pt-8 mt-0 
+        tablet:pt-0
+        tablet:mt-60
+        mobile:pt-96 
+        mobile:mt-60 
+        mini-laptop:pt-0
+        mini-laptop:mt-2
+        laptop:pt-1
+        laptop:mt-1
+        desktop:mt-0
+        desktop:pt-0 " 
+         >
+      <div className="text-center my-4">
+        <h2 className="text-4xl font-bold text-center my-12">Meet the <i>Cyslabs</i> team</h2>
       </div>     
       <ScrollingTestimonials data={testimonials} />
     </div>
