@@ -1,6 +1,5 @@
 import { cn } from "@/src/lib/utils";
 
-
 interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Should the marquee scroll horizontally or vertically.
@@ -47,12 +46,12 @@ export default function Marquee({
     <div
       {...props}
       className={cn(
-        "group relative flex h-full w-full p-2 [--duration:10s] [--gap:12px] [gap:var(--gap)]",
+        "group relative flex h-[50vh] w-full p-5 [--duration:10s] [--gap:12px] [gap:var(--gap)]",
         {
           "flex-col": vertical,
           "flex-row": !vertical,
         },
-        className
+        className,
       )}
     >
       {Array.from({ length: repeat }).map((_, index) => (
@@ -75,7 +74,7 @@ export default function Marquee({
             {
               "bg-gradient-to-b": vertical,
               "bg-gradient-to-r": !vertical,
-            }
+            },
           )}
         />
       )}

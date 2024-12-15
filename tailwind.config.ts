@@ -62,6 +62,8 @@ const config: Config = {
       },
 
       animation: {
+        "marquee-horizontal": "marquee-x var(--duration) infinite linear",
+        "marquee-vertical": "marquee-y var(--duration) linear infinite",
         aurora: "aurora 45s ease-in-out infinite",
         "meteor-effect": "meteor 5s linear infinite",
         "marquee-horizontal": "marquee-x var(--duration) infinite linear",
@@ -79,7 +81,6 @@ const config: Config = {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
-
         aurora: {
           "0%": {
             backgroundPosition: "0% 50%",

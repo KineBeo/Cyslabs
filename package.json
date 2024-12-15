@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.1",
     "@react-three/drei": "^9.119.0",
     "@react-three/fiber": "^8.17.10",
     "@studio-freight/lenis": "^1.0.42",
@@ -20,6 +21,7 @@
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
     "dotted-map": "^2.2.3",
+    "embla-carousel-react": "^8.5.1",
     "framer-motion": "^11.14.1",
     "lenis": "^1.1.18",
     "lucide-react": "^0.462.0",

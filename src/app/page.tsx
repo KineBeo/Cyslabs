@@ -6,7 +6,7 @@ import SwipeButton from "./components/animata/button/swipe-button";
 import WhatWeDo from "./components/whatwedo";
 import Customer from "./components/customer";
 import WhatWeDoBackground from "./components/ui/whatwedo-background";
-
+import Member from "./components/homepage/member";
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
@@ -179,6 +179,7 @@ export default function Home() {
         </div>
       </div>
         <WhatWeDo />
+        <Member />
         <Customer />
     </div>
   );
