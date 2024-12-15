@@ -66,6 +66,8 @@ const config: Config = {
         "marquee-vertical": "marquee-y var(--duration) linear infinite",
         aurora: "aurora 45s ease-in-out infinite",
         "meteor-effect": "meteor 5s linear infinite",
+        "marquee-horizontal": "marquee-x var(--duration) infinite linear",
+        "marquee-vertical": "marquee-y var(--duration) linear infinite",
       },
       transitionTimingFunction: {
         "minor-spring": "cubic-bezier(0.18,0.89,0.82,1.04)",
@@ -80,14 +82,14 @@ const config: Config = {
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
         aurora: {
-          '0%': {
-            backgroundPosition: '0% 50%',
+          "0%": {
+            backgroundPosition: "0% 50%",
           },
-          '50%': {
-            backgroundPosition: '100% 50%',
+          "50%": {
+            backgroundPosition: "100% 50%",
           },
-          '100%': {
-            backgroundPosition: '0% 50%',
+          "100%": {
+            backgroundPosition: "0% 50%",
           },
         },
         "reveal-up": {
