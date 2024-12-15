@@ -60,24 +60,35 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      
+
       animation: {
         aurora: "aurora 45s ease-in-out infinite",
         "meteor-effect": "meteor 5s linear infinite",
-      }, 
+        "marquee-horizontal": "marquee-x var(--duration) infinite linear",
+        "marquee-vertical": "marquee-y var(--duration) linear infinite",
+      },
       transitionTimingFunction: {
         "minor-spring": "cubic-bezier(0.18,0.89,0.82,1.04)",
       },
       keyframes: {
+        "marquee-x": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-y": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+
         aurora: {
-          '0%': {
-            backgroundPosition: '0% 50%',
+          "0%": {
+            backgroundPosition: "0% 50%",
           },
-          '50%': {
-            backgroundPosition: '100% 50%',
+          "50%": {
+            backgroundPosition: "100% 50%",
           },
-          '100%': {
-            backgroundPosition: '0% 50%',
+          "100%": {
+            backgroundPosition: "0% 50%",
           },
         },
         "reveal-up": {
@@ -88,7 +99,7 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(-80%)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-          "content-blur": {
+        "content-blur": {
           "0%": { filter: "blur(0.3rem)" },
           "100%": { filter: "blur(0)" },
         },
@@ -137,7 +148,7 @@ function addVariablesForColors({ addBase, theme }: any) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
