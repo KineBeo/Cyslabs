@@ -29,7 +29,7 @@ export default function SmoothScroll() {
   const [lenis, setLenis] = useState<Lenis | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -60,41 +60,41 @@ export default function SmoothScroll() {
 
   return (
     <RandomStarBackground id="smooth-scroll">
-    <div ref={wrapperRef} className="w-full min-h-screen relative">
-      <div ref={containerRef} className="h-[350vh] relative">
-        {/* Fixed left section */}
-        <div className="sticky top-0 left-0 w-1/2 h-screen flex items-center justify-center p-8">
-          <div className="bg-black p-12 rounded-lg border border-red-500">
-            <h1 className="text-6xl font-bold text-white leading-tight">
-              WHY<br />
-              CYSLABS?<br />
-            </h1>
+      <div ref={wrapperRef} className="w-full min-h-screen relative">
+        <div ref={containerRef} className="h-[300vh] relative">
+          {/* Fixed left section */}
+          <div className="sticky top-0 w-1/2 h-screen flex items-center justify-center p-8">
+            <div className="p-10 border-l-4 border-blue-500">
+              <h1 className="text-7xl font-bold text-white leading-tight">
+                WHY<br />
+                CYSLABS?<br />
+              </h1>
+            </div>
+          </div>
+
+          {/* Scrolling right section */}
+          <div className="absolute right-0 w-1/2 desktop:top-80 desktop:space-y-96">
+            {sections.map((section, index) => (
+              <motion.div
+                key={index}
+                className="h-[30vh] w-2/3 flex items-center"
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{
+                  duration: 0.6, // Increased duration for smoother animation
+                  ease: [0.5, 0, 0.5, 1], // Changed easing function for smoother animation
+                }}
+              >
+                <div className="p-8 rounded-lg">
+                  <h2 className="desktop:text-5xl text-3xl font-bold text-white mb-4">{section.title}</h2>
+                  <p className="text-gray-300 desktop:text-2xl desktop:font-semibold">{section.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
-
-        {/* Scrolling right section */}
-        <div className="absolute right-0 w-1/2 top-0">
-          {sections.map((section, index) => (
-            <motion.div
-              key={index}
-              className="h-[80vh] flex items-center p-8"
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{
-                duration: 0.6, // Increased duration for smoother animation
-                ease: [0.42, 0, 0.58, 1], // Changed easing function for smoother animation
-              }}
-            >
-              <div className="bg-black p-8 rounded-lg border border-blue-500">
-                <h2 className="text-2xl font-semibold text-white mb-4">{section.title}</h2>
-                <p className="text-gray-300">{section.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
-    </div>
     </RandomStarBackground>
   );
 }

@@ -4,6 +4,7 @@ import React, { ReactNode } from "react";
 import { SparklesCore } from "../ui/sparkles";
 import { Overlay } from "../threejs/Overlay";
 import { Scene } from "../threejs/Scene";
+import MacbookScene from "../mac3D/MacbookScene";
 
 interface SpaceBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
