@@ -18,33 +18,33 @@ export default function InfoForm() {
       className="h-screen flex items-center justify-center"
     >
       <div className="max-w-3xl w-full h-fit mx-auto rounded-none desktop:rounded-2xl laptop:rounded-2xl p-4 desktop:p-8 laptop:p-8 shadow-input bg-white dark:bg-black">
-        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+        <h2 className="font-bold text-xl laptop:text-2xl desktop:text-2xl text-neutral-800 dark:text-neutral-200 text-center">
           Welcome to CYSLABS
         </h2>
-        <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+        <p className="text-neutral-600 text-sm laptop:text-base desktop:text-base max-w-sm mt-2 dark:text-neutral-300">
           Do you want to contact with us?
         </p>
-        <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+        <p className="text-neutral-600 text-sm laptop:text-base desktop:text-base max-w-sm mt-2 dark:text-neutral-300">
           Please provide your infomation? We will conntact you soon.
         </p>
 
         <form className="my-8" onSubmit={handleSubmit}>
           <div className="flex flex-col desktop:flex-row laptop:flex-row space-y-2 desktop:space-y-0 laptop:space-y-0 desktop:space-x-2 laptop:space-x-2 mb-4">
             <LabelInputContainer>
-              <Label htmlFor="firstname">First name</Label>
+              <Label htmlFor="firstname" className="laptop:text-base desktop:text-base" >First name</Label>
               <Input id="firstname" placeholder="Tyler" type="text" />
             </LabelInputContainer>
             <LabelInputContainer>
-              <Label htmlFor="lastname">Last name</Label>
+              <Label htmlFor="lastname"  className="laptop:text-base desktop:text-base">Last name</Label>
               <Input id="lastname" placeholder="Durden" type="text" />
             </LabelInputContainer>
           </div>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="email">Your Email</Label>
+            <Label htmlFor="email" className="laptop:text-base desktop:text-base">Your Email</Label>
             <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="password">Phone number</Label>
+            <Label htmlFor="password"  className="laptop:text-base desktop:text-base">Phone number</Label>
             <Input id="password" placeholder="0123465789" type="password" />
           </LabelInputContainer>
 
