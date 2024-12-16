@@ -5,10 +5,11 @@ import { AuroraBackground } from "./components/ui/aurora-background";
 import SwipeButton from "./components/animata/button/swipe-button";
 import WhatWeDo from "./components/homepage/whatwedo";
 import Customer from "./components/homepage/customer";
-import RandomStarBackground from "./components/ui/random-start-background";
 import Member from "./components/homepage/member";
+import InfoForm from "./components/homepage/info-form";
 import SmoothScroll from "./components/homepage/SmoothScrollText";
 import MacbookScene from "./components/mac3D/MacbookScene";
+
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
@@ -45,7 +46,7 @@ export default function Home() {
 
 
   return (
-    <div className="h-screen bg-black">
+    <div className="h-full bg-black">
       <div className="h-full w-full overflow-hidden relative">
         <AuroraBackground>
           <div
@@ -173,6 +174,7 @@ export default function Home() {
       <WhatWeDo />
       <Member />
       <Customer />
+      <InfoForm />
     </div>
   );
 }
