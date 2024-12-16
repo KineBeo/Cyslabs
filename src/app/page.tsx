@@ -43,7 +43,7 @@ export default function Home() {
 
 
   return (
-    <div className="h-screen bg-black">
+    <div className="h-full bg-black">
       <div className="h-full w-full overflow-hidden relative">
         <AuroraBackground>
           <div
