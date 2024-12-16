@@ -7,6 +7,7 @@ import WhatWeDo from "./components/homepage/whatwedo";
 import Customer from "./components/homepage/customer";
 import RandomStarBackground from "./components/ui/random-start-background";
 import Member from "./components/homepage/member";
+import SmoothScroll from "./components/homepage/SmoothScrollText";
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
@@ -178,6 +179,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <SmoothScroll />
         <WhatWeDo />
         <Member />
         <Customer />
