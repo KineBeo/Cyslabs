@@ -4,8 +4,8 @@ import { FC } from 'react'
 
 export const Overlay: FC = () => {
   return (
-    <div className="absolute inset-0 pointer-events-none">
-      <a href="https://pmnd.rs/" className="absolute bottom-10 left-20 text-sm pointer-events-auto hover:text-white">
+    <div className="absolute inset-0 z-20">
+      <a href="https://pmnd.rs/" className="absolute bottom-10 left-20 text-sm hover:text-white">
         pmnd.rs
         <br />
         dev collective
