@@ -5,8 +5,8 @@ import { AuroraBackground } from "./components/ui/aurora-background";
 import SwipeButton from "./components/animata/button/swipe-button";
 import WhatWeDo from "./components/homepage/whatwedo";
 import Customer from "./components/homepage/customer";
-import RandomStarBackground from "./components/ui/random-start-background";
 import Member from "./components/homepage/member";
+import InfoForm from "./components/homepage/info-form";
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
@@ -178,9 +178,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-        <WhatWeDo />
-        <Member />
-        <Customer />
+      <WhatWeDo />
+      <Member />
+      <Customer />
+      <InfoForm />
     </div>
   );
 }
