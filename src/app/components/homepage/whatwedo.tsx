@@ -43,34 +43,34 @@ export default function WhatWeDo() {
 
   const services: Service[] = [
     {
-      title: "Penetration Testing",
-      description: "Identify vulnerabilities before attackers do",
-      icon: "🕵️",
+      title: "Web Application Development",
+      description: "Custom web apps tailored to your business needs",
+      icon: "💻",
     },
     {
-      title: "Security Audits",
-      description: "Comprehensive review of your digital infrastructure",
-      icon: "🔍",
+      title: "UI/UX Design",
+      description: "Deliver intuitive and engaging user experiences",
+      icon: "🎨",
     },
     {
-      title: "Incident Response",
-      description: "Swift and effective handling of security threats",
-      icon: "🚨",
+      title: "API Integration",
+      description: "Seamless integration with third-party services and tools",
+      icon: "🔗",
     },
     {
-      title: "Network Security",
-      description: "Protect your network from unauthorized access",
-      icon: "🌐",
+      title: "Performance Optimization",
+      description: "Ensure fast and reliable application performance",
+      icon: "⚡",
     },
     {
-      title: "Cloud Security",
-      description: "Secure your cloud environments and data",
-      icon: "☁️",
+      title: "Security Solutions",
+      description: "Implement robust security measures to protect your data",
+      icon: "🛡️",
     },
     {
-      title: "Training & Awareness",
-      description: "Educate your team about cybersecurity best practices",
-      icon: "📚",
+      title: "Maintenance & Support",
+      description: "Ongoing updates and technical support for your web apps",
+      icon: "🛠️",
     },
   ];
 
@@ -78,9 +78,9 @@ export default function WhatWeDo() {
     <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
       <RandomStarBackground id="what-we-do">
         <div className="h-screen text-white py-16 justify-center items-center flex">
-          <div className="mx-auto">
-            <h2 className="desktop:text-7xl font-bold text-center my-12">What We Do</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="mx-auto mobile:px-8 tablet:px-8">
+            <h2 className="desktop:text-7xl laptop:text-6xl mini-laptop:text-5xl tablet:text-4xl mobile:text-3xl font-bold text-center my-12">What We Do</h2>
+            <div className="grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-3 px-6 mobile:px-2 gap-10">
               <AnimatePresence>
                 {services.map((service, index) => (
                   <AnimatedServiceCard
