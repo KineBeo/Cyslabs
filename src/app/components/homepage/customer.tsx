@@ -47,16 +47,15 @@ const products = [
 
 export default function Customer() {
   return (
-    <RandomStarBackground id="customer-star" className="h-screen flex items-center justify-center">
-      <div className="h-fit grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 pb-40 gap-8 px-12 mobile:px-0">
-        <div className="col-span-2 flex flex-col">
-          <div className="desktop:text-7xl laptop:text-5xl text-4xl font-extrabold px-10 text-white">
-            <div>
-              CYSLABS
-            </div>
-            <div className="">
-              IN USE
-            </div>
+    <RandomStarBackground
+      id="customer-star"
+      className="h-screen flex items-center justify-center"
+    >
+      <div className="h-fit grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1  pb-40 gap-8 px-12 mobile:px-0">
+        <div className="col-span-2 flex flex-col mx-auto w-full">
+          <div className="desktop:text-7xl laptop:text-5xl text-4xl font-extrabold w-full ml-4 px-10 text-white">
+            <div className="mobile:text-center tablet:text-center">CYSLABS</div>
+            <div className="mobile:text-center tablet:text-center">IN USE</div>
           </div>
         </div>
         <div className="col-span-3 flex flex-col mobile:place-self-start">
