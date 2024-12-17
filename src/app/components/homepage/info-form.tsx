@@ -21,7 +21,7 @@ export default function InfoForm() {
       tablet:px-8
       mini-laptop:px-8"
     >
-      <div className="max-w-3xl w-full h-fit mx-auto shadow-input bg-white dark:bg-black
+      <div className="max-w-3xl w-full h-fit mx-auto shadow-input bg-black border border-neutral-500
       desktop:p-8 desktop:rounded-2xl 
       laptop:p-8 laptop:rounded-2xl
       p-4 rounded-xl transition-all
@@ -32,13 +32,11 @@ export default function InfoForm() {
           CYSLABS are here for you
         </h2>
         <p className="text-neutral-600 text-base mt-2 dark:text-neutral-300
-        mobile:text-center
-        tablet:text-center">
+        text-center">
           Do you want to contact with us?
         </p>
         <p className="text-neutral-600 text-base mt-2 dark:text-neutral-300
-        mobile:text-center
-        tablet:text-center">
+        text-center">
           Join us Now! We will conntact you soon.
         </p>
 
@@ -48,20 +46,20 @@ export default function InfoForm() {
           "
           >
             <LabelInputContainer>
-              <Label htmlFor="firstname" className="text-base" >First name</Label>
+              <Label htmlFor="firstname" className="text-base font-semibold" >First name</Label>
               <Input id="firstname" placeholder="Type your first name" type="text" />
             </LabelInputContainer>
             <LabelInputContainer>
-              <Label htmlFor="lastname"  className="text-base">Last name</Label>
+              <Label htmlFor="lastname"  className="text-base font-semibold">Last name</Label>
               <Input id="lastname" placeholder="Type your last name" type="text" />
             </LabelInputContainer>
           </div>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="email" className="text-base">Your Email</Label>
+            <Label htmlFor="email" className="text-base font-semibold">Your Email</Label>
             <Input id="email" placeholder="Type your email" type="email" />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="password"  className="text-base">Phone number</Label>
+            <Label htmlFor="password"  className="text-base font-semibold">Phone number</Label>
             <Input id="password" placeholder="Contact number" type="phone" />
           </LabelInputContainer>
 
