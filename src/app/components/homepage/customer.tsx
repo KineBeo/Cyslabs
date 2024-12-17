@@ -10,7 +10,7 @@ interface ProductItemProps {
 const ProductItem: React.FC<ProductItemProps> = ({ title, type }) => (
   <>
     <div
-      className="mx-20 mobile:mx-4 tablet:mx-4 px-2 py-4 
+      className="mx-20 mobile:mx-4 tablet:mx-4 mini-laptop:mx-8 px-2 py-4 
                 cursor-pointer 
                 relative 
                 transition-all 
@@ -26,7 +26,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ title, type }) => (
                 before:duration-200 
                 before:z-[-1]"
     >
-      <div className="flex justify-between relative z-10 hover:px-2 transition-all">
+      <div className="flex justify-between mobile:gap-12 tablet:gap-16 mini-laptop:gap-16 relative z-10 hover:px-2 transition-all">
         <p className="font-bold text-2xl text-white group-hover:text-white">
           {title}
         </p>
@@ -48,9 +48,9 @@ const products = [
 export default function Customer() {
   return (
     <RandomStarBackground id="customer-star" className="h-screen flex items-center justify-center">
-      <div className="h-fit grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 pb-40 gap-8 p-20">
+      <div className="h-fit grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 pb-40 gap-8 px-12 mobile:px-0">
         <div className="col-span-2 flex flex-col">
-          <div className="desktop:text-7xl text-4xl font-extrabold px-10 text-white">
+          <div className="desktop:text-7xl laptop:text-5xl text-4xl font-extrabold px-10 text-white">
             <div>
               CYSLABS
             </div>
@@ -59,7 +59,7 @@ export default function Customer() {
             </div>
           </div>
         </div>
-        <div className="col-span-3 flex flex-col w-full mobile:place-self-start">
+        <div className="col-span-3 flex flex-col mobile:place-self-start">
           {products.map((product) => (
             <ProductItem
               key={product.id}
