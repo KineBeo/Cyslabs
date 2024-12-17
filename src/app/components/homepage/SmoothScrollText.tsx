@@ -65,7 +65,13 @@ export default function SmoothScroll() {
           {/* Fixed left section */}
           <div className="sticky top-0 w-1/2 h-screen flex items-center justify-center p-8">
             <div className="p-10 border-l-4 border-blue-500">
-              <h1 className="text-7xl font-bold text-white leading-tight">
+              <h1 className="
+              font-bold text-white leading-tight
+              mobile:text-2xl
+              tablet:text-3xl
+              mini-laptop:text-4xl
+              laptop:text-5xl
+              desktop:text-7xl">
                 WHY<br />
                 CYSLABS?<br />
               </h1>
@@ -73,11 +79,21 @@ export default function SmoothScroll() {
           </div>
 
           {/* Scrolling right section */}
-          <div className="absolute right-0 w-1/2 desktop:top-80 desktop:space-y-96">
+          <div className="absolute right-0 w-1/2 
+          mobile:top-80 
+          mobile:space-y-64 
+          tablet:top-80 
+          tablet:space-y-64
+          mini-laptop:top-80
+          mini-laptop:space-y-64
+          laptop:top-80
+          laptop:space-y-64
+          desktop:top-80 
+          desktop:space-y-96 ">
             {sections.map((section, index) => (
               <motion.div
                 key={index}
-                className="h-[30vh] w-2/3 flex items-center"
+                className="h-[30vh] w-2/3 mobile:w-full tablet:w-4/5 flex items-center"
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -87,7 +103,13 @@ export default function SmoothScroll() {
                 }}
               >
                 <div className="p-8 rounded-lg">
-                  <h2 className="desktop:text-5xl text-3xl font-bold text-white mb-4">{section.title}</h2>
+                  <h2 className="
+                  font-bold text-white mb-4
+                  mobile:text-xl 
+                  tablet:text-2xl 
+                  mini-laptop:text-3xl 
+                  laptop:text-4xl 
+                  desktop:text-5xl">{section.title}</h2>
                   <p className="text-gray-300 desktop:text-2xl desktop:font-semibold">{section.description}</p>
                 </div>
               </motion.div>
