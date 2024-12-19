@@ -53,7 +53,7 @@ export default function Customer({ props }: CustomerProps) {
       <div className="gap-8 grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 px-12 mobile:px-0 pb-40 h-fit">
         <div className="flex flex-col col-span-2 mx-auto w-full">
           <div className="ml-4 px-10 w-full font-extrabold text-4xl text-white desktop:text-7xl laptop:text-5xl">
-            {words.map((word) => <div className="mobile:text-center tablet:text-center">{word}</div>)}
+            {words.map((word, index) => <div key={index} className="mobile:text-center tablet:text-center">{word}</div>)}
           </div>
         </div>
         <div className="flex flex-col col-span-3 mobile:place-self-start">
