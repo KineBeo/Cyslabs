@@ -5,6 +5,7 @@ import { SparklesCore } from "../ui/sparkles";
 import { Overlay } from "../threejs/Overlay";
 import { Scene } from "../threejs/Scene";
 import MacbookScene from "../mac3D/MacbookScene";
+import { EnhancedDogViewer } from "../dog/voxel-dog";
 
 interface SpaceBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
@@ -59,6 +60,7 @@ export const AuroraBackground = ({
           ></div>
         </div>
         {children}
+        <div className="absolute top-0 desktop:left-0 text-sm z-30"><EnhancedDogViewer /></div>
       </div>
     </main>
   );
