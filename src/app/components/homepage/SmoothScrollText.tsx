@@ -5,30 +5,27 @@ import { useEffect, useRef, useState } from 'react';
 import Lenis from '@studio-freight/lenis';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import RandomStarBackground from '../ui/random-start-background';
+import { Omit } from '@react-spring/web';
+import { Questions } from '@/src/service/strapi/interface/section';
 
-const sections = [
-  {
-    title: "We've heard all the reasons to not use smooth scroll.",
-    description: "It feels hacky. It's inaccessible. It's not performant. It's over-engineered. And historically, those were all true."
-  },
-  {
-    title: "But we like to imagine things as they could be,",
-    description: "then build them. So, why should you use smooth scroll?"
-  },
-  {
-    title: "The answer is simple:",
-    description: "Because when done right, it creates an immersive, engaging experience that enhances user interaction."
-  },
-  {
-    title: "It's all about the details.",
-    description: "Smooth scrolling can guide users through content in a more controlled, intentional way."
-  }
-];
+function convertTextToTsx(text: string): JSX.Element {
+  const parts = text.split('|').map(part => part.trim());
+  return (
+    <>
+      {parts[0]} <br /> {parts[1]}
+    </>
+  );
+}
+interface SmoothScrollProps {
+  props: Omit<Questions, "__component">;
+}
 
-export default function SmoothScroll() {
+export default function SmoothScroll({ props }: SmoothScrollProps) {
   const [lenis, setLenis] = useState<Lenis | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const sections = props.answers;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -60,40 +57,23 @@ export default function SmoothScroll() {
 
   return (
     <RandomStarBackground id="smooth-scroll">
-      <div ref={wrapperRef} className="w-full min-h-screen relative">
-        <div ref={containerRef} className="h-[300vh] relative">
+      <div ref={wrapperRef} className="relative w-full min-h-screen">
+        <div ref={containerRef} className="relative h-[300vh]">
           {/* Fixed left section */}
-          <div className="sticky top-0 w-1/2 h-screen flex items-center justify-center p-8">
-            <div className="p-10 border-l-4 border-blue-500">
-              <h1 className="
-              font-bold text-white leading-tight
-              mobile:text-2xl
-              tablet:text-3xl
-              mini-laptop:text-4xl
-              laptop:text-5xl
-              desktop:text-7xl">
-                WHY<br />
-                CYSLABS?<br />
+          <div className="top-0 sticky flex justify-center items-center p-8 w-1/2 h-screen">
+            <div className="p-10 border-blue-500 border-l-4">
+              <h1 className="font-bold text-white mobile:text-2xl tablet:text-3xl mini-laptop:text-4xl laptop:text-5xl desktop:text-7xl leading-tight">
+                {convertTextToTsx(props.question)}
               </h1>
             </div>
           </div>
 
           {/* Scrolling right section */}
-          <div className="absolute right-0 w-1/2 
-          mobile:top-80 
-          mobile:space-y-64 
-          tablet:top-80 
-          tablet:space-y-64
-          mini-laptop:top-80
-          mini-laptop:space-y-64
-          laptop:top-80
-          laptop:space-y-64
-          desktop:top-80 
-          desktop:space-y-96 ">
-            {sections.map((section, index) => (
+          <div className="desktop:top-80 laptop:top-80 mini-laptop:top-80 mobile:top-80 tablet:top-80 right-0 absolute desktop:space-y-96 laptop:space-y-64 mini-laptop:space-y-64 mobile:space-y-64 tablet:space-y-64 w-1/2">
+            {sections && sections.map((section, index) => (
               <motion.div
                 key={index}
-                className="h-[30vh] w-2/3 mobile:w-full tablet:w-4/5 flex items-center"
+                className="flex items-center w-2/3 mobile:w-full tablet:w-4/5 h-[30vh]"
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -103,14 +83,8 @@ export default function SmoothScroll() {
                 }}
               >
                 <div className="p-8 rounded-lg">
-                  <h2 className="
-                  font-bold text-white mb-4
-                  mobile:text-xl 
-                  tablet:text-2xl 
-                  mini-laptop:text-3xl 
-                  laptop:text-4xl 
-                  desktop:text-5xl">{section.title}</h2>
-                  <p className="text-gray-300 desktop:text-2xl desktop:font-semibold">{section.description}</p>
+                  <h2 className="mb-4 font-bold text-white mobile:text-xl tablet:text-2xl mini-laptop:text-3xl laptop:text-4xl desktop:text-5xl">{section.title}</h2>
+                  <p className="desktop:font-semibold text-gray-300 desktop:text-2xl">{section.description}</p>
                 </div>
               </motion.div>
             ))}
