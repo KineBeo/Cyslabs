@@ -9,6 +9,11 @@ import Member from "./components/homepage/member";
 import InfoForm from "./components/homepage/info-form";
 import SmoothScroll from "./components/homepage/SmoothScrollText";
 import MacbookScene from "./components/mac3D/MacbookScene";
+import userSWR from "swr";
+import fetchHomepage from "../service/strapi/homepage";
+import Loading from "./components/ux/loading";
+import HeroSectionComponent from "./components/homepage/hero-section";
+import { CustomersSection, HeroSection, Questions, ServicesSection, Team } from "../service/strapi/interface/section";
 
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
@@ -16,164 +21,37 @@ const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => 
 
 export default function Home() {
 
+  const { data, isLoading, error } = userSWR('homepage', fetchHomepage);
 
-  const words1 = [
-    {
-      text: "The",
-    },
-    {
-      text: "Coolest",
-    },
-    {
-      text: "Team",
-    },
-    {
-      text: "Of",
-    },
-  ];
+  // if (isLoading) {
+  //   return (
+  //     <Loading />
+  //   );
+  // }
 
-  const words2 = [
-    {
-      text: "CyberSecurity",
-    },
-    {
-      text: "Has",
-    },
-    {
-      text: "Arrived",
-    },
-  ]
-
+  if (error) {
+    return <div>Error</div>;
+  }
 
   return (
-    <div className="h-full bg-black">
-      <div className="h-full w-full overflow-hidden relative">
-        <AuroraBackground>
-          <div
-            className="absolute z-10  
-          mobile:top-44
-          tablet:top-48
-          mini-laptop:top-52 
-          laptop:top-56
-          desktop:top-48"
-          >
-            <div
-              className="text-foreground 
-              mobile:text-3xl
-              mobile:justify-center
-              tablet:text-3xl
-              tablet:justify-center
-              mini-laptop:text-5xl
-              laptop:text-6xl
-              laptop:justify-start
-              desktop:text-8xl
-              desktop:justify-star
-               font-bold"
-            >
-              {words1.map((word) => word.text).join(" ")}
-            </div>
-            <div
-              className="text-foreground 
-            font-bold
-              mobile:text-2xl
-              mobile:justify-center
-              tablet:text-3xl
-              tablet:justify-center
-              mini-laptop:text-5xl
-              laptop:text-6xl
-              desktop:text-8xl
-              laptop:ml-32
-              desktop:ml-52  
-              mobile:mt-2
-              desktop:mt-6"
-            >
-              {words2.map((word) => word.text).join(" ")}
-            </div>
-          </div>
-          <MacbookScene />
-        </AuroraBackground>
-        <div
-          className="absolute z-20 flex justify-center w-full
-        mobile:top-72
-        tablet:top-80
-        mini-laptop:top-80
-        laptop:top-80
-        desktop:top-96"
-        >
-          <div
-            className="absolute z-20
-          laptop:right-12
-          laptop:top-16
-          desktop:right-16
-          desktop:top-16
-          "
-          >
-            <div
-              className="font-semibold text-black dark:text-white 
-              mobile:text-lg
-              mobile:justify-center
-              mobile:text-center
-              tablet:text-xl
-              mini-laptop:text-2xl
-              laptop:text-3xl
-              laptop:justify-start
-              desktop:text-3xl
-              desktop:justify-start
-              text-2xl"
-            >
-              Cyslabs is a cybersecurity squad keeping
-            </div>
-            <div
-              className="font-semibold text-black dark:text-white 
-              mobile:text-lg
-              mobile:justify-center
-              tablet:text-xl
-              mini-laptop:text-2xl
-              laptop:text-3xl
-              laptop:justify-start
-              desktop:text-3xl
-              desktop:justify-start
-              text-2xl"
-            >
-              data and privacy safe #StaySecure #CyberSquad
-            </div>
-            <div
-              className="flex flex-row gap-4 mt-4 font-semibold
-            mobile:justify-center
-            tablet:justify-center
-            mini-laptop:justify-center
-            "
-            >
-              <SwipeButton
-                firstText="Join now"
-                secondText="Signup"
-                className="min-w-[150px]"
-                firstClass="bg-[#FEDC69] text-black 
-                mobile:text-base
-                tablet:text-lg"
-                secondClass="bg-[#FEDC69] text-black 
-                mobile:text-base
-                tablet:text-lg"
-              />
-              <SwipeButton
-                firstText="Join now"
-                secondText="Signup"
-                className="min-w-[150px]"
-                firstClass="bg-transparent text-white border border-white
-                mobile:text-base
-                tablet:text-lg"
-                secondClass="bg-transparent text-white border border-white
-                mobile:text-base
-                tablet:text-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <SmoothScroll />
-      <WhatWeDo />
-      <Member />
-      <Customer />
+    <div className="h-full">
+      <HeroSectionComponent />
+      {data?.content.map((content, index) => {
+        switch (content.__component) {
+          case "section.questions":
+            return <SmoothScroll props={content as Questions} />;
+          case "section.team":
+            return <Member props={content as Team} />;
+          case "section.services":
+            return <WhatWeDo props={content as ServicesSection} />;
+          case "section.customers":
+            return <Customer props={content as CustomersSection} />;
+          case "section.info-form":
+            return <InfoForm />;
+          default:
+            return null;
+        }
+      })}
       <InfoForm />
     </div>
   );

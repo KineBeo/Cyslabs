@@ -12,40 +12,55 @@ export default function InfoForm() {
     e.preventDefault();
     console.log("Form submitted");
   };
+
   return (
     <RandomStarBackground
       id="signup-star"
-      className="h-screen flex items-center justify-center"
+      className="h-screen flex items-center justify-center
+      mobile:px-4
+      tablet:px-8
+      mini-laptop:px-8"
     >
-      <div className="max-w-3xl w-full h-fit mx-auto rounded-none desktop:rounded-2xl laptop:rounded-2xl p-4 desktop:p-8 laptop:p-8 shadow-input bg-white dark:bg-black">
-        <h2 className="font-bold text-xl laptop:text-2xl desktop:text-2xl text-neutral-800 dark:text-neutral-200 text-center">
-          Welcome to CYSLABS
+      <div className="max-w-3xl w-full h-fit mx-auto shadow-input bg-black border border-neutral-500
+      desktop:p-8 desktop:rounded-2xl 
+      laptop:p-8 laptop:rounded-2xl
+      p-4 rounded-xl transition-all
+      ease-in-out duration-300
+      "
+      >
+        <h2 className="font-bold text-2xl text-neutral-800 dark:text-neutral-200 text-center capitalize">
+          CYSLABS are here for you
         </h2>
-        <p className="text-neutral-600 text-sm laptop:text-base desktop:text-base max-w-sm mt-2 dark:text-neutral-300">
+        <p className="text-neutral-600 text-base mt-2 dark:text-neutral-300
+        text-center">
           Do you want to contact with us?
         </p>
-        <p className="text-neutral-600 text-sm laptop:text-base desktop:text-base max-w-sm mt-2 dark:text-neutral-300">
-          Please provide your infomation? We will conntact you soon.
+        <p className="text-neutral-600 text-base mt-2 dark:text-neutral-300
+        text-center">
+          Join us Now! We will conntact you soon.
         </p>
 
         <form className="my-8" onSubmit={handleSubmit}>
-          <div className="flex flex-col desktop:flex-row laptop:flex-row space-y-2 desktop:space-y-0 laptop:space-y-0 desktop:space-x-2 laptop:space-x-2 mb-4">
+          <div className="flex flex-row gap-4 mb-4
+          mobile:flex-col
+          "
+          >
             <LabelInputContainer>
-              <Label htmlFor="firstname" className="laptop:text-base desktop:text-base" >First name</Label>
-              <Input id="firstname" placeholder="Tyler" type="text" />
+              <Label htmlFor="firstname" className="text-base font-semibold" >First name</Label>
+              <Input id="firstname" placeholder="Type your first name" type="text" />
             </LabelInputContainer>
             <LabelInputContainer>
-              <Label htmlFor="lastname"  className="laptop:text-base desktop:text-base">Last name</Label>
-              <Input id="lastname" placeholder="Durden" type="text" />
+              <Label htmlFor="lastname"  className="text-base font-semibold">Last name</Label>
+              <Input id="lastname" placeholder="Type your last name" type="text" />
             </LabelInputContainer>
           </div>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="email" className="laptop:text-base desktop:text-base">Your Email</Label>
-            <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+            <Label htmlFor="email" className="text-base font-semibold">Your Email</Label>
+            <Input id="email" placeholder="Type your email" type="email" />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="password"  className="laptop:text-base desktop:text-base">Phone number</Label>
-            <Input id="password" placeholder="0123465789" type="password" />
+            <Label htmlFor="password"  className="text-base font-semibold">Phone number</Label>
+            <Input id="password" placeholder="Contact number" type="phone" />
           </LabelInputContainer>
 
           <button
