@@ -32,9 +32,8 @@ function convertDescription(text: string, tags: Tag[]) {
 interface HeroSectionProps { props: Omit<HeroSection, "__component"> }
 
 export default function HeroSectionComponent() {
-
     const props = {
-        title: "Cyslabs | Cybersecurity Squad",
+        title: "The Coolest Team Of | CyberSecurity Has Arrived",
         description: "Cyslabs is a cybersecurity squad keeping data and privacy safe",
         tags: [
             {
@@ -57,12 +56,12 @@ export default function HeroSectionComponent() {
                     className="desktop:top-48 laptop:top-56 mini-laptop:top-52 mobile:top-44 tablet:top-48 z-10 absolute"
                 >
                     <div
-                        className="desktop:justify-star laptop:justify-start mobile:justify-center tablet:justify-center font-bold text-foreground mobile:text-3xl tablet:text-3xl mini-laptop:text-5xl laptop:text-6xl desktop:text-8xl"
+                        className="desktop:justify-star laptop:justify-start mobile:justify-center tablet:justify-center font-bold text-foreground mobile:text-3xl tablet:text-3xl mini-laptop:text-5xl laptop:text-6xl desktop:text-8xl select-none"
                     >
                         {words1.map((word) => word.text).join(" ")}
                     </div>
                     <div
-                        className="desktop:ml-52 desktop:mt-6 laptop:ml-32 mobile:justify-center tablet:justify-center mobile:mt-2 font-bold text-foreground mobile:text-2xl tablet:text-3xl mini-laptop:text-5xl laptop:text-6xl desktop:text-8xl"
+                        className="desktop:ml-52 desktop:mt-6 laptop:ml-32 mobile:justify-center tablet:justify-center mobile:mt-2 font-bold text-foreground mobile:text-2xl tablet:text-3xl mini-laptop:text-5xl laptop:text-6xl desktop:text-8xl select-none"
                     >
                         {words2.map((word) => word.text).join(" ")}
                     </div>
@@ -78,7 +77,12 @@ export default function HeroSectionComponent() {
                     <div
                         className="desktop:justify-start laptop:justify-start mobile:justify-center font-semibold text-2xl text-black mobile:text-lg mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white mobile:text-center tablet:text-xl"
                     >
-                        Cyslabs is a cybersecurity squad keeping
+                        <span className="underline text-blue-300 
+                        mobile:text-xl 
+                        tablet:text-2xl
+                        mini-laptop:text-2xl
+                        laptop:text-3xl
+                        desktop:text-4xl ">Cyslabs</span> is a cybersecurity squad keeping
                     </div>
                     <div
                         className="desktop:justify-start laptop:justify-start mobile:justify-center font-semibold text-2xl text-black mobile:text-lg tablet:text-xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white"
@@ -114,5 +118,4 @@ export default function HeroSectionComponent() {
                 </div>
             </div>
         </div>
-    )
-}
+    )}
