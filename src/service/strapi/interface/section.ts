@@ -1,4 +1,4 @@
-import { Employee } from "./collection";
+import { Customer, Employee, Service } from "./collection";
 import { Meta_pair, Tag } from "./content";
 
 export interface Content {
@@ -25,8 +25,12 @@ export interface Team extends Content {
 }
 
 // Services component interface
-export interface Services extends Content {
+export interface ServicesSection extends Content {
   title: string;
-  description: string;
-  icon: string;
+  services: Service[];
+}
+
+export interface CustomersSection extends Content {
+  title: string;
+  customers: Customer[];
 }

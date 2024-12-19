@@ -12,10 +12,10 @@ interface HomepageResponse {
 const fetchHomepage = async (): Promise<Homepage | undefined> => {
   try {
     const response = await strapi.get<HomepageResponse>(
-      "/homepage?populate[content][populate]=*"
+      "/homepage?populate=content.services&populate=content.employees.avatar&populate=content.answers&populate=content.customers"
     );
 
-    // console.log(response.data.data);
+    console.log(response.data.data);
     return response.data.data;
   } catch (error) {
     console.error(error);

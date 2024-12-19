@@ -70,7 +70,7 @@ export default function SmoothScroll({ props }: SmoothScrollProps) {
 
           {/* Scrolling right section */}
           <div className="desktop:top-80 laptop:top-80 mini-laptop:top-80 mobile:top-80 tablet:top-80 right-0 absolute desktop:space-y-96 laptop:space-y-64 mini-laptop:space-y-64 mobile:space-y-64 tablet:space-y-64 w-1/2">
-            {sections.map((section, index) => (
+            {sections && sections.map((section, index) => (
               <motion.div
                 key={index}
                 className="flex items-center w-2/3 mobile:w-full tablet:w-4/5 h-[30vh]"

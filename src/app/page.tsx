@@ -13,7 +13,7 @@ import userSWR from "swr";
 import fetchHomepage from "../service/strapi/homepage";
 import Loading from "./components/ux/loading";
 import HeroSectionComponent from "./components/homepage/hero-section";
-import { HeroSection, Questions } from "../service/strapi/interface/section";
+import { CustomersSection, HeroSection, Questions, ServicesSection, Team } from "../service/strapi/interface/section";
 
 const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
   ssr: false,
@@ -23,11 +23,11 @@ export default function Home() {
 
   const { data, isLoading, error } = userSWR('homepage', fetchHomepage);
 
-  if (isLoading) {
-    return (
-      <Loading />
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Loading />
+  //   );
+  // }
 
   if (error) {
     return <div>Error</div>;
@@ -35,29 +35,23 @@ export default function Home() {
 
   return (
     <div className="h-full">
+      <HeroSectionComponent />
       {data?.content.map((content, index) => {
         switch (content.__component) {
-          case "section.hero-section":
-            return (
-              <HeroSectionComponent props={content as HeroSection}
-                key={index}
-              />
-            );
           case "section.questions":
             return <SmoothScroll props={content as Questions} />;
-          case "section.member":
-            return <Member />;
-          case "section.customer":
-            return <Customer />;
+          case "section.team":
+            return <Member props={content as Team} />;
+          case "section.services":
+            return <WhatWeDo props={content as ServicesSection} />;
+          case "section.customers":
+            return <Customer props={content as CustomersSection} />;
           case "section.info-form":
             return <InfoForm />;
           default:
             return null;
         }
       })}
-      <WhatWeDo />
-      <Member />
-      <Customer />
       <InfoForm />
     </div>
   );

@@ -3,13 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactLenis } from "lenis/react";
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 import RandomStarBackground from "../ui/random-start-background";
-
-// Define the Service type
-interface Service {
-  title: string;
-  description: string;
-  icon: string;
-}
+import { Service } from "@/src/service/strapi/interface/collection";
+import { ServicesSection } from "@/src/service/strapi/interface/section";
 
 // Define props types
 interface AnimatedServiceCardProps {
@@ -17,7 +12,11 @@ interface AnimatedServiceCardProps {
   index: number;
 }
 
-export default function WhatWeDo() {
+interface WhatWeDoProps {
+  props: ServicesSection;
+}
+
+export default function WhatWeDo({ props }: WhatWeDoProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -41,46 +40,14 @@ export default function WhatWeDo() {
     };
   }, []);
 
-  const services: Service[] = [
-    {
-      title: "Web Application Development",
-      description: "Custom web apps tailored to your business needs",
-      icon: "💻",
-    },
-    {
-      title: "UI/UX Design",
-      description: "Deliver intuitive and engaging user experiences",
-      icon: "🎨",
-    },
-    {
-      title: "API Integration",
-      description: "Seamless integration with third-party services and tools",
-      icon: "🔗",
-    },
-    {
-      title: "Performance Optimization",
-      description: "Ensure fast and reliable application performance",
-      icon: "⚡",
-    },
-    {
-      title: "Security Solutions",
-      description: "Implement robust security measures to protect your data",
-      icon: "🛡️",
-    },
-    {
-      title: "Maintenance & Support",
-      description: "Ongoing updates and technical support for your web apps",
-      icon: "🛠️",
-    },
-  ];
-
+  const services = props.services;
   return (
     <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
       <RandomStarBackground id="what-we-do">
-        <div className="h-screen text-white py-16 justify-center items-center flex">
+        <div className="flex justify-center items-center py-16 h-screen text-white">
           <div className="mx-auto mobile:px-8 tablet:px-8">
-            <h2 className="desktop:text-7xl laptop:text-6xl mini-laptop:text-5xl tablet:text-4xl mobile:text-3xl font-bold text-center my-12">What We Do</h2>
-            <div className="grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-3 px-6 mobile:px-2 gap-10">
+            <h2 className="my-12 font-bold text-center desktop:text-7xl laptop:text-6xl mini-laptop:text-5xl tablet:text-4xl mobile:text-3xl">What We Do</h2>
+            <div className="gap-10 grid grid-cols-1 desktop:grid-cols-3 laptop:grid-cols-3 px-6 mobile:px-2">
               <AnimatePresence>
                 {services.map((service, index) => (
                   <AnimatedServiceCard
@@ -165,10 +132,10 @@ function AnimatedServiceCard({
           ease: "backOut",
         },
       }}
-      className="bg-gray-900 p-6 rounded-3xl shadow-xl  hover:bg-gray-800"
+      className="bg-gray-900 hover:bg-gray-800 shadow-xl p-6 rounded-3xl"
     >
-      <div className="text-4xl mb-4">{service.icon}</div>
-      <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+      <div className="mb-4 text-4xl">{service.icon}</div>
+      <h3 className="mb-2 font-bold text-xl">{service.title}</h3>
       <p className="text-gray-300">{service.description}</p>
     </motion.div>
   );

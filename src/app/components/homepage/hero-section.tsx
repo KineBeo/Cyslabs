@@ -31,7 +31,22 @@ function convertDescription(text: string, tags: Tag[]) {
 
 interface HeroSectionProps { props: Omit<HeroSection, "__component"> }
 
-export default function HeroSectionComponent({ props }: HeroSectionProps) {
+export default function HeroSectionComponent() {
+
+    const props = {
+        title: "Cyslabs | Cybersecurity Squad",
+        description: "Cyslabs is a cybersecurity squad keeping data and privacy safe",
+        tags: [
+            {
+                text: "StaySecure",
+                url: null,
+            },
+            {
+                text: "CyberSquad",
+                url: null,
+            },
+        ],
+    }
 
     const { words1, words2 } = splitTextToArrays(props.title);
 
