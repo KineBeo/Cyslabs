@@ -44,7 +44,7 @@ export default function WhatWeDo({ props }: WhatWeDoProps) {
   return (
     <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
       <RandomStarBackground id="what-we-do">
-        <div className="flex justify-center items-center py-16 h-screen text-white">
+        <div className="flex justify-center items-center py-16 h-full text-white">
           <div className="mx-auto mobile:px-8 tablet:px-8">
             <h2 className="my-12 font-bold text-center desktop:text-7xl laptop:text-6xl mini-laptop:text-5xl tablet:text-4xl mobile:text-3xl">What We Do</h2>
             <div className="gap-10 grid grid-cols-1 desktop:grid-cols-3 laptop:grid-cols-3 px-6 mobile:px-2">
