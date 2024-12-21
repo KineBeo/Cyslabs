@@ -9,9 +9,10 @@ import { a as three } from '@react-spring/three'
 interface MacModelProps {
   open: boolean
   hinge: any
+  scale?: [number, number, number] // Add scale prop
 }
 
-export default function MacModel({ open, hinge, ...props }: MacModelProps) {
+export default function MacModel({ open, hinge, scale = [1, 1, 1], ...props }: MacModelProps) { // Default scale to [1, 1, 1]
   const group = useRef<THREE.Group>(null!)
   const { nodes, materials } = useGLTF('/mac-draco.glb')
   const [hovered, setHovered] = useState(false)
@@ -49,6 +50,7 @@ export default function MacModel({ open, hinge, ...props }: MacModelProps) {
     <group 
       ref={group}
       {...props}
+      scale={scale} // Set the scale here
       onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
       onPointerOut={() => setHovered(false)}
       dispose={null}
