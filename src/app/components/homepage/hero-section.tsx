@@ -85,7 +85,7 @@ export default function HeroSectionComponent() {
                         desktop:text-4xl ">Cyslabs</span> is a cybersecurity squad keeping
                     </div>
                     <div
-                        className="desktop:justify-start laptop:justify-start mobile:justify-center font-semibold text-2xl text-black mobile:text-lg tablet:text-xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white"
+                        className="desktop:justify-start laptop:justify-start mobile:justify-center mobile:text-center font-semibold text-2xl text-black mobile:text-lg tablet:text-xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white"
                     >
                         data and privacy safe #StaySecure #CyberSquad
                     </div>
