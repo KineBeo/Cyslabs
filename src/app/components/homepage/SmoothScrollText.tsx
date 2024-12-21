@@ -58,7 +58,7 @@ export default function SmoothScroll({ props }: SmoothScrollProps) {
   return (
     <RandomStarBackground id="smooth-scroll">
       <div ref={wrapperRef} className="relative w-full min-h-screen">
-        <div ref={containerRef} className="relative h-[300vh]">
+        <div ref={containerRef} className="relative h-[325vh] desktop:h-[350vh]">
           {/* Fixed left section */}
           <div className="top-0 sticky flex justify-center items-center p-8 w-1/2 h-screen">
             <div className="p-10 border-blue-500 border-l-4">
