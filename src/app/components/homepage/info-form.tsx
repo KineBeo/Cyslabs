@@ -105,7 +105,7 @@ const InfoForm: React.FC = () => {
 
         {success && (
           <div className="mt-4 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 rounded-md">
-            Thank you for your submission! We'll contact you soon.
+            Thank you for your submission! We will contact you soon.
           </div>
         )}
 
