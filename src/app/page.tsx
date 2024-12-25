@@ -16,13 +16,7 @@ const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => 
 
 export default function Home() {
 
-  const { data, isLoading, error } = userSWR('homepage', fetchHomepage);
-
-  // if (isLoading) {
-  //   return (
-  //     <Loading />
-  //   );
-  // }
+  const { data, error } = userSWR('homepage', fetchHomepage);
 
   if (error) {
     return <div>Error</div>;

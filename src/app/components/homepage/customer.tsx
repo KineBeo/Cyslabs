@@ -14,13 +14,13 @@ const ProductItem: React.FC<ProductItemProps> = ({ title, type }) => (
       className="relative mini-laptop:mx-8 before:z-[-1] before:absolute before:inset-0 before:bg-cyan-700 mx-20 mobile:mx-4 tablet:mx-4 px-2 py-4 before:origin-bottom transition-all before:transition-transform duration-200 before:duration-200 cursor-pointer before:scale-y-0 ease-in-out hover:before:scale-y-100"
     >
       <div className="relative z-10 flex justify-between mini-laptop:gap-16 mobile:gap-12 tablet:gap-16 hover:px-2 transition-all">
-        <p className="group-hover:text-white font-bold text-2xl text-white">
+        <p className="group-hover:text-white font-bold mobile:text-xl tablet:text-xl mini-laptop:text-xl text-2xl text-white">
           {title}
         </p>
-        <p className="group-hover:text-white text-white text-xl">{type}</p>
+        <p className="group-hover:text-white text-white mobile:text-lg text-xl">{type}</p>
       </div>
     </div>
-    <div className="bg-slate-500 mx-20 mobile:mx-4 tablet:mx-4 px-2 h-0.5" />
+    <div className="bg-slate-500 mx-20 mobile:mx-4 tablet:mx-4 mini-laptop:mx-8 px-2 h-0.5" />
   </>
 );
 
@@ -52,11 +52,11 @@ export default function Customer({ props }: CustomerProps) {
     >
       <div className="gap-8 grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 px-12 mobile:px-0 pb-40 h-fit">
         <div className="flex flex-col col-span-2 mx-auto w-full">
-          <div className="ml-4 px-10 w-full font-extrabold text-4xl text-white desktop:text-7xl laptop:text-5xl">
+          <div className="ml-4 w-full font-extrabold text-4xl text-white desktop:text-7xl laptop:text-5xl p-10 border-blue-500 border-l-4">
             {words.map((word, index) => <div key={index} className="mobile:text-center tablet:text-center">{word}</div>)}
           </div>
         </div>
-        <div className="flex flex-col col-span-3 mobile:place-self-start">
+        <div className="flex flex-col col-span-3 mobile:place-self-start p-10">
           {props.customers.map((product) => (
             <ProductItem
               key={product.id}
