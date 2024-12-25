@@ -12,7 +12,7 @@ interface StarsProps {
 
 export function Stars(props: StarsProps) {
   const ref = useRef<ThreePoints>(null!)
-  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }))
+  const [sphere] = useState(() => random.inSphere(new Float32Array(2000), { radius: 1 }))
 
   useFrame((state, delta) => {
     if (ref.current) {

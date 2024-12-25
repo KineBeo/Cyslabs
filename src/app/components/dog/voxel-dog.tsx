@@ -86,7 +86,7 @@ function Scene() {
         enablePan={true}
         enableZoom={false} // Disable zoom
         enableRotate={true}
-        autoRotate={false}
+        autoRotate={true}
         target={new THREE.Vector3(-0.5, 1.2, 0)}
       />
     </>

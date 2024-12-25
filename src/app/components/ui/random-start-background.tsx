@@ -1,9 +1,7 @@
-"use client";
+"use client";;
 import { cn } from "@/src/lib/utils";
 import React, { ReactNode } from "react";
 import { SparklesCore } from "./sparkles";
-import { Overlay } from "../threejs/Overlay";
-import { Scene } from "../threejs/Scene";
 
 interface SpaceBackgroundProps extends React.HTMLProps<HTMLDivElement> {
     children: ReactNode;
@@ -30,8 +28,8 @@ export const RandomStarBackground = ({
             id={id} // Sử dụng prop id
             background="transparent"
             minSize={0.6}
-            maxSize={2.4}
-            particleDensity={15}
+            maxSize={2}
+            particleDensity={8}
             className="w-full h-full"
             particleColor="#FFFFFF"
           />
