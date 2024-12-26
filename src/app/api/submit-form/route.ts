@@ -1,3 +1,5 @@
+import { mailService } from "@/src/service/email/mailer";
+import { generateContactEmail } from "@/src/templates/contactEmail";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -34,52 +36,13 @@ export async function POST(request: Request) {
   try {
     const formData: FormData = await request.json();
 
-    // Validate form data
-    const validationError = validateFormData(formData);
-    if (validationError) {
-      return NextResponse.json({ message: validationError }, { status: 400 });
-    }
-
-    // Verify environment variables
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
-      throw new Error("Missing email configuration");
-    }
-
-    const { firstname, lastname, email, phone } = formData;
-
-    // Create a transporter using SMTP
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
-
-    // Sanitize and format email content
-    const sanitizedFirstName = firstname.replace(/[<>]/g, "");
-    const sanitizedLastName = lastname.replace(/[<>]/g, "");
-    const sanitizedEmail = email.replace(/[<>]/g, "");
-    const sanitizedPhone = phone.replace(/[<>]/g, "");
-
-    // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.CONTACT_EMAIL || "22028118@vnu.edu.vn",
-      subject: "New Contact Form Submission",
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${sanitizedFirstName} ${sanitizedLastName}</p>
-        <p><strong>Email:</strong> ${sanitizedEmail}</p>
-        <p><strong>Phone:</strong> ${sanitizedPhone}</p>
-        <p><strong>Submitted at:</strong> ${new Date().toISOString()}</p>
-      `,
-    };
+    const emailTemplate = generateContactEmail(formData);
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    await mailService.sendMail(
+      process.env.CONTACT_EMAIL || "22028118@vnu.edu.vn",
+      emailTemplate
+    );
 
     return NextResponse.json(
       { message: "Form submitted successfully" },

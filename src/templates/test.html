@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>New Contact Request</title>
+  </head>
+  <body
+    style="
+      background-image: url(&quot;https://cdn.wallpapersafari.com/45/35/6MZiOl.jpg&quot;);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    "
+  >
+    <div
+      style="
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(15, 23, 42, 0.75);
+        min-height: 100vh;
+        backdrop-filter: blur(10px);
+      "
+    >
+      <!-- Header with Space Theme -->
+      <div
+        style="
+          background: rgba(30, 41, 59, 0.85);
+          padding: 30px;
+          border-radius: 15px;
+          margin-bottom: 20px;
+          text-align: center;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(4px);
+        "
+      >
+        <div
+          style="
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+          "
+        >
+          🚀 New Contact Request Received
+        </div>
+        <div style="font-size: 16px; color: #94a3b8">
+          A new star has joined our galaxy
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div
+        style="
+          background: rgba(30, 41, 59, 0.85);
+          padding: 30px;
+          border-radius: 15px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(4px);
+        "
+      >
+        <div style="margin-bottom: 25px">
+          <div
+            style="
+              color: #38bdf8;
+              font-size: 18px;
+              margin-bottom: 20px;
+              text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            "
+          >
+            👨‍🚀 Contact Details
+          </div>
+
+          <!-- Contact Information -->
+          <div
+            style="
+              background: rgba(15, 23, 42, 0.8);
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              border: 1px solid rgba(255, 255, 255, 0.05);
+            "
+          >
+            <div style="margin-bottom: 15px">
+              <span style="color: #94a3b8">Full Name:</span>
+              <div style="color: #ffffff; font-weight: bold">
+                ${data.firstname} ${data.lastname}
+              </div>
+            </div>
+
+            <div style="margin-bottom: 15px">
+              <span style="color: #94a3b8">Email Address:</span>
+              <div style="color: #ffffff; font-weight: bold">${data.email}</div>
+            </div>
+
+            <div style="margin-bottom: 15px">
+              <span style="color: #94a3b8">Phone Number:</span>
+              <div style="color: #ffffff; font-weight: bold">${data.phone}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div style="text-align: center; margin-top: 30px">
+          <a
+            href="mailto:${data.email}"
+            style="
+              background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+              color: #ffffff;
+              padding: 12px 25px;
+              border-radius: 8px;
+              text-decoration: none;
+              display: inline-block;
+              font-weight: bold;
+              box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+              text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            "
+          >
+            Respond to Request
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        style="
+          text-align: center;
+          margin-top: 30px;
+          color: #94a3b8;
+          font-size: 14px;
+        "
+      >
+        <p>This is an automated message from your Contact Form System</p>
+        <div style="margin-top: 10px">⭐️ Stay focused on the stars ⭐️</div>
+      </div>
+    </div>
+  </body>
+</html>
