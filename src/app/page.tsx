@@ -1,5 +1,4 @@
-"use client";;
-import dynamic from "next/dynamic";
+"use client";
 import WhatWeDo from "./components/homepage/whatwedo";
 import Customer from "./components/homepage/customer";
 import Member from "./components/homepage/member";
@@ -9,10 +8,6 @@ import userSWR from "swr";
 import fetchHomepage from "../service/strapi/homepage";
 import HeroSectionComponent from "./components/homepage/hero-section";
 import { CustomersSection, Questions, ServicesSection, Team } from "../service/strapi/interface/section";
-
-const World = dynamic(() => import("@/src/app/components/ui/globe").then((m) => m.World), {
-  ssr: false,
-});
 
 export default function Home() {
 
@@ -31,8 +26,8 @@ export default function Home() {
             return <SmoothScroll props={content as Questions} />;
           case "section.team":
             return <Member props={content as Team} />;
-          case "section.services":
-            return <WhatWeDo props={content as ServicesSection} />;
+          // case "section.services":
+          //   return <WhatWeDo props={content as ServicesSection} />;
           case "section.customers":
             return <Customer props={content as CustomersSection} />;
           case "section.info-form":
@@ -41,7 +36,6 @@ export default function Home() {
             return null;
         }
       })}
-      <InfoForm />
     </div>
   );
 }

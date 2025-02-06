@@ -94,7 +94,7 @@ export default function HeroSectionComponent() {
                     >
                         <SwipeButton
                             firstText="Join now"
-                            secondText="Signup"
+                            secondText="Sign up"
                             className="min-w-[150px]"
                             firstClass="bg-[#FEDC69] text-black 
                 mobile:text-base
@@ -104,8 +104,8 @@ export default function HeroSectionComponent() {
                 tablet:text-lg"
                         />
                         <SwipeButton
-                            firstText="Join now"
-                            secondText="Signup"
+                            firstText="Contact us"
+                            secondText="Contact us"
                             className="min-w-[150px]"
                             firstClass="bg-transparent text-white border border-white
                 mobile:text-base
