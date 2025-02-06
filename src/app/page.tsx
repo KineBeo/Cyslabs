@@ -36,6 +36,7 @@ export default function Home() {
             return null;
         }
       })}
+      <InfoForm />
     </div>
   );
 }
