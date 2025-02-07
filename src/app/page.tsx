@@ -24,10 +24,10 @@ export default function Home() {
         switch (content.__component) {
           case "section.questions":
             return <SmoothScroll props={content as Questions} />;
-          case "section.team":
-            return <Member props={content as Team} />;
-          // case "section.services":
-          //   return <WhatWeDo props={content as ServicesSection} />;
+          // case "section.team":
+          //   return <Member props={content as Team} />;
+          case "section.services":
+            return <WhatWeDo props={content as ServicesSection} />;
           case "section.customers":
             return <Customer props={content as CustomersSection} />;
           case "section.info-form":
