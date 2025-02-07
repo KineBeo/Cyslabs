@@ -14,10 +14,7 @@ const convertTextToTsx = (text: string): React.ReactNode => {
     </>
   ) : text;
 };
-
-interface SmoothScrollProps {
-  props: Omit<Questions, "__component">;
-}
+convertTextToTsx.displayName = 'ConvertTextToTsx';
 
 // Memoized Answer Section Component
 const AnswerSection = React.memo(({
@@ -57,8 +54,9 @@ const AnswerSection = React.memo(({
     </motion.div>
   );
 });
+AnswerSection.displayName = 'AnswerSection';
 
-export default function SmoothScroll({ props }: SmoothScrollProps) {
+export default function SmoothScroll({ props }: { props: Omit<Questions, "__component"> }) {
   // Optimize Lenis initialization with useRef
   const lenisRef = useRef<Lenis | null>(null);
 
@@ -137,3 +135,4 @@ export default function SmoothScroll({ props }: SmoothScrollProps) {
     </RandomStarBackground>
   );
 }
+SmoothScroll.displayName = 'SmoothScroll';

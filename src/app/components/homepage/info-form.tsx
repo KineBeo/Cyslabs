@@ -93,9 +93,9 @@ const InfoForm: React.FC = () => {
         p-4 rounded-xl transition-all
         ease-in-out duration-300"
       >
-        <h2 className="font-bold text-2xl text-neutral-800 dark:text-neutral-200 text-center capitalize">
+        <p className="font-bold text-2xl text-neutral-800 dark:text-neutral-200 text-center capitalize">
           CYSLABS are here for you
-        </h2>
+        </p>
         <p className="text-neutral-600 text-base mt-2 dark:text-neutral-300 text-center">
           Do you want to contact with us?
         </p>

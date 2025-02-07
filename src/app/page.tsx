@@ -1,7 +1,6 @@
 "use client";
 import WhatWeDo from "./components/homepage/whatwedo";
 import Customer from "./components/homepage/customer";
-import Member from "./components/homepage/member";
 import InfoForm from "./components/homepage/info-form";
 import SmoothScroll from "./components/homepage/SmoothScrollText";
 import userSWR from "swr";
