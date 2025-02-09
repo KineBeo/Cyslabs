@@ -29,7 +29,7 @@ export const RandomStarBackground = ({
             background="transparent"
             minSize={0.6}
             maxSize={2}
-            particleDensity={8}
+            particleDensity={4}
             className="w-full h-full"
             particleColor="#FFFFFF"
           />

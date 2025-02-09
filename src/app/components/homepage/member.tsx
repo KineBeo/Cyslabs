@@ -3,6 +3,7 @@ import Marquee from "@/src/app/components/animata/container/marquee";
 import RandomStarBackground from "../ui/random-start-background";
 import { Employee } from "@/src/service/strapi/interface/collection";
 import { Team } from "@/src/service/strapi/interface/section";
+import Image from "next/image";
 // Định nghĩa interface cho dữ liệu testimonial
 
 interface TestimonialProps {
@@ -21,7 +22,7 @@ function TestimonialCard({
       key={name}
     >
       <div className="relative flex-shrink-0 w-48 h-full overflow-hidden">
-        <img src={avatar?.formats?.thumbnail?.url || "/img/hi.jpg"} alt={name} className="w-full h-full object-cover" />
+        <Image src={avatar?.formats?.thumbnail?.url || "/img/hi.jpg"} alt={name} className="w-full h-full object-cover" />
       </div>
       <div className="px-4 py-2">
         <span className="block font-bold text-foreground text-lg">{name}</span>
@@ -59,7 +60,7 @@ const Member = ({ props }: MemberProps) => {
       <div className="desktop:mt-0 desktop:pt-0 laptop:mt-1 laptop:pt-1 mini-laptop:mt-2 mini-laptop:pt-0 mt-0 mobile:mt-60 tablet:mt-60 px-4 -pt-8 mobile:pt-96 tablet:pt-0"
       >
         <div className="my-4 text-center">
-          <h2 className="my-12 font-bold text-4xl text-center text-white desktop:text-7xl">{props.title || "Meet the Cyslabs"}</h2>
+          <p className="my-12 font-bold text-4xl text-center text-white desktop:text-7xl">{props.title || "Meet the Cyslabs"}</p>
         </div>
         <ScrollingTestimonials data={props.employees} />
       </div>

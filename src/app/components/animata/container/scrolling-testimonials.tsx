@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Marquee from "./marquee";
 
 interface Testimonial {
@@ -21,7 +22,7 @@ function TestimonialCard({
       key={name}
     >
       <div className="relative h-full w-48 flex-shrink-0 overflow-hidden">
-        <img src={image} alt={name} className="h-full w-full object-cover" />
+        <Image src={image} alt={name} className="h-full w-full object-cover" />
       </div>
       <div className="px-4 py-2">
         <span className="block text-lg font-bold text-foreground">{name}</span>
