@@ -1,10 +1,23 @@
 import React, { useMemo } from 'react';
 import { HeroSection } from "@/src/service/strapi/interface/section";
-import SwipeButton from "../animata/button/swipe-button";
-import MacbookScene from "../mac3D/MacbookScene";
-import AuroraBackground from "../ui/aurora-background";
 import { Tag } from "@/src/service/strapi/interface/content";
 import { Omit } from "@react-spring/web";
+import dynamic from 'next/dynamic';
+
+const MacbookScene = dynamic(() => import('../mac3D/MacbookScene'), {
+    ssr: false,
+    loading: () => <div className="h-screen bg-black" />
+});
+
+const SwipeButton = dynamic(() => import('../animata/button/swipe-button'), {
+    ssr: false,
+    loading: () => <div className="h-screen bg-black" />
+});
+
+const AuroraBackground = dynamic(() => import('../ui/aurora-background'), {
+  ssr: false,
+  loading: () => <div className="h-screen bg-black" />
+});
 
 // Optimized text splitting function
 const splitTextToArrays = (text: string) => {
