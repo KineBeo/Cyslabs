@@ -41,9 +41,9 @@ const AnswerSection = memo(({ title, description }: { title: string, description
   return (
     <motion.div
       {...animationProps}
-      className="flex items-center w-2/3 mobile:w-full tablet:w-4/5 h-[30vh]"
+      className="flex items-center w-4/5 mobile:w-full h-[30vh]"
     >
-      <div className="p-8 rounded-lg transform transition hover:scale-105">
+      <div className="p-4 rounded-lg transform transition lg:hover:scale-105 md:hover:scale-105">
         <h2 className="mb-4 font-bold text-white mobile:text-xl tablet:text-2xl mini-laptop:text-3xl laptop:text-4xl desktop:text-5xl">
           {title}
         </h2>
@@ -124,8 +124,8 @@ const SmoothScroll = memo(({ props }: { props: Omit<Questions, "__component"> })
     <RandomStarBackground id="smooth-scroll">
       <div ref={wrapperRef} className="relative w-full min-h-screen">
         <div ref={containerRef} className="relative h-[325vh] desktop:h-[350vh]">
-          <div className="sticky top-0 h-screen flex items-center justify-start p-8 w-1/2">
-            <div className="p-10 border-l-4 border-blue-500">
+          <div className="sticky top-0 h-screen flex items-center justify-start p-4 lg:p-24 md:p-20 w-1/2">
+            <div className="p-4 md:p-10 lg:p-12 border-l-4 border-blue-500">
               <h1 className="font-bold text-white mobile:text-2xl tablet:text-3xl mini-laptop:text-4xl laptop:text-5xl desktop:text-7xl leading-tight">
                 {convertedQuestion}
               </h1>

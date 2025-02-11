@@ -13,7 +13,7 @@ export default function MacbookScene() {
   const props = useSpring({ open: Number(open) })
 
   return (
-    <div className="absolute inset-y-56 w-full md:w-1/2 lg:w-1/3 h-1/4 lg:h-1/2  lg:left-0">
+    <div className="absolute inset-y-56 md:inset-y-80 w-full md:w-1/2 lg:w-1/3 md:h-1/3 lg:h-1/2 lg:left-0 md:left-0 mobile:hidden">
       <Canvas
         dpr={[1, 2]}
         camera={{ position: [0, 0, -30], fov: 35 }}
