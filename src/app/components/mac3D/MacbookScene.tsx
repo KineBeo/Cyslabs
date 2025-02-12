@@ -5,28 +5,15 @@ import { Canvas } from '@react-three/fiber'
 import { Environment, ContactShadows, OrbitControls } from '@react-three/drei'
 import { useSpring } from '@react-spring/core'
 import { a as three } from '@react-spring/three'
-import { a as web } from '@react-spring/web'
-import MacModel from './MacModel'
+
+const MacModel = React.lazy(() => import('./MacModel'))
 
 export default function MacbookScene() {
   const [open, setOpen] = useState(true)
   const props = useSpring({ open: Number(open) })
 
   return (
-    <div className="absolute inset-y-48 
-    mobile:w-1/2 
-    mobile:h-1/4 
-    mobile:inset-y-96
-    tablet:w-full 
-    mini-laptop:w-1/3
-    mini-laptop:h-1/4
-    mini-laptop:inset-y-96
-    laptop:w-1/3
-    laptop:h-1/4
-    laptop:inset-y-80
-    laptop:left-0
-    desktop:w-1/3
-    desktop:left-0">
+    <div className="absolute inset-y-56 md:inset-y-80 w-full md:w-1/2 lg:w-1/3 md:h-1/3 lg:h-1/2 lg:left-0 md:left-0 mobile:hidden">
       <Canvas
         dpr={[1, 2]}
         camera={{ position: [0, 0, -30], fov: 35 }}

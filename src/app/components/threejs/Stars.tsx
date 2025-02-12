@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
-import { Group, Points as ThreePoints } from 'three'
+import { Points as ThreePoints } from 'three'
 import { random } from 'maath'
 
 interface StarsProps {

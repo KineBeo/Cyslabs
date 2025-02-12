@@ -3,8 +3,8 @@ import React, {
   useRef,
   useState,
   useMemo,
-  Suspense,
-  memo
+  useCallback,
+  Suspense
 } from "react";
 import dynamic from "next/dynamic";
 import Lenis from "lenis";
@@ -13,98 +13,118 @@ import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion"
 import { Service } from "@/src/service/strapi/interface/collection";
 import { ServicesSection } from "@/src/service/strapi/interface/section";
 
-// Dynamically import heavy components
+// Pre-define animation variants outside component to prevent recreation
+const CARD_ANIMATION_VARIANTS = {
+  initial: { opacity: 0.5, y: 0 },
+  exit: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "backOut",
+    },
+  }
+};
+
+// Cache for service cards
+const cardCache = new Map();
+
 const RandomStarBackground = dynamic(() => import("../ui/random-start-background"), {
   ssr: false,
-  loading: () => <div className="h-screen bg-black" />,
 });
 
-// Optimized Icon Component with dynamic import
-const ServiceIcon = memo(({ name }: { name: string }) => {
-  // Replace with actual icon rendering logic
+const ServiceIcon = React.memo(({ name }: { name: string }) => {
   return <div className="text-4xl">{name}</div>;
 });
 ServiceIcon.displayName = 'ServiceIcon';
 
-// Memoized and optimized AnimatedServiceCard
-const AnimatedServiceCard = memo<{
+const AnimatedServiceCard = React.memo(({ service, index, isLoaded }: {
   service: Service;
   index: number;
   isLoaded: boolean;
-}>(({ service, index, isLoaded }) => {
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     amount: 0.1,
-    once: false,
   });
   const controls = useAnimation();
 
-  // Memoize animation variants
-  const animationVariants = useMemo(() => ({
-    initial: { opacity: 0.5, y: 0 },
-    inView: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 2,
-        ease: "backOut",
-        delay: index * 0.1,
-      }
-    },
-    outOfView: {
-      opacity: 0,
-      y: 100,
-      transition: {
-        duration: 2,
-        ease: "backOut",
-      }
+  // Generate unique cache key
+  const cacheKey = `${service.id}-${index}`;
+
+  // Get or create animation variants
+  const animationVariants = useMemo(() => {
+    if (cardCache.has(cacheKey)) {
+      return cardCache.get(cacheKey);
     }
-  }), [index]);
 
-  useEffect(() => {
-    const animateCard = async () => {
-      if (!isLoaded) {
-        await controls.set(animationVariants.initial);
-        return;
+    const variants = {
+      ...CARD_ANIMATION_VARIANTS,
+      inView: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 1.5, // Reduced from 2
+          ease: "backOut",
+          delay: Math.min(index * 0.08, 0.5), // Capped delay
+        }
+      },
+      outOfView: {
+        opacity: 0,
+        y: 100,
+        transition: {
+          duration: 1.5, // Reduced from 2
+          ease: "backOut",
+        }
       }
-
-      await controls.start(isInView ? animationVariants.inView : animationVariants.outOfView);
     };
 
-    animateCard();
+    cardCache.set(cacheKey, variants);
+    return variants;
+  }, [index, cacheKey]);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      controls.set(animationVariants.initial);
+      return;
+    }
+
+    if (isInView) {
+      controls.start(animationVariants.inView);
+    }
   }, [isLoaded, isInView, controls, animationVariants]);
+
+  // Memoize card content
+  const cardContent = useMemo(() => (
+    <>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ServiceIcon name={service.icon} />
+      </Suspense>
+      <h3 className="mb-2 font-bold text-xl mt-4">{service.title}</h3>
+      <p className="text-gray-300">{service.description}</p>
+    </>
+  ), [service]);
 
   return (
     <motion.div
       ref={ref}
       initial={animationVariants.initial}
       animate={controls}
-      exit={{
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.5,
-          ease: "backOut",
-        },
-      }}
+      exit={animationVariants.exit}
       className="bg-gray-900 hover:bg-gray-800 shadow-xl p-6 rounded-3xl transition-colors duration-300"
     >
-      <Suspense fallback={<div>Loading...</div>}>
-        <ServiceIcon name={service.icon} />
-      </Suspense>
-      <h3 className="mb-2 font-bold text-xl mt-4">{service.title}</h3>
-      <p className="text-gray-300">{service.description}</p>
+      {cardContent}
     </motion.div>
   );
 });
 AnimatedServiceCard.displayName = 'AnimatedServiceCard';
 
-export default function WhatWeDo({ props }: { props: ServicesSection }) {
+const WhatWeDo = React.memo(({ props }: { props: ServicesSection }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const lenisRef = useRef<Lenis | null>(null);
 
-  // Memoize services to prevent unnecessary re-renders
-  const memoizedServices = useMemo(() =>
+  // Memoize services with useCallback
+  const renderServices = useCallback(() =>
     props.services.map((service, index) => (
       <AnimatedServiceCard
         key={service.id || index}
@@ -117,43 +137,60 @@ export default function WhatWeDo({ props }: { props: ServicesSection }) {
   );
 
   useEffect(() => {
-    // Optimize Lenis initialization
-    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
-    lenisRef.current = lenis;
+    let rafId: number;
 
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-    requestAnimationFrame(raf);
+    if (!lenisRef.current) {
+      const lenis = new Lenis({
+        lerp: 0.08, // Reduced from 0.1
+        smoothWheel: true,
+        wheelMultiplier: 0.8 // Added for smoother scrolling
+      });
+      lenisRef.current = lenis;
 
-    // Slight delay to ensure initial render is complete
-    const loadTimer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
+      const raf = (time: number) => {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
+      rafId = requestAnimationFrame(raf);
+    }
+
+    // Reduced delay
+    const loadTimer = setTimeout(() => setIsLoaded(true), 50);
 
     return () => {
-      lenis.destroy();
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
+      if (rafId) cancelAnimationFrame(rafId);
       clearTimeout(loadTimer);
     };
   }, []);
 
+  // Memoize the entire content
+  const content = useMemo(() => (
+    <div className="flex justify-center items-center py-16 h-full text-white">
+      <div className="mx-auto mobile:px-8 tablet:px-8">
+        <h2 className="my-12 font-bold text-center desktop:text-7xl laptop:text-6xl mini-laptop:text-5xl tablet:text-4xl mobile:text-3xl">
+          What We Do
+        </h2>
+        <div className="gap-10 grid grid-cols-1 desktop:grid-cols-3 laptop:grid-cols-3 px-6 mobile:px-2">
+          <AnimatePresence>
+            {renderServices()}
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  ), [renderServices]);
+
   return (
     <ReactLenis root>
       <RandomStarBackground id="what-we-do">
-        <div className="flex justify-center items-center py-16 h-full text-white">
-          <div className="mx-auto mobile:px-8 tablet:px-8">
-            <h2 className="my-12 font-bold text-center desktop:text-7xl laptop:text-6xl mini-laptop:text-5xl tablet:text-4xl mobile:text-3xl">
-              What We Do
-            </h2>
-            <div className="gap-10 grid grid-cols-1 desktop:grid-cols-3 laptop:grid-cols-3 px-6 mobile:px-2">
-              <AnimatePresence>
-                {memoizedServices}
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
+        {content}
       </RandomStarBackground>
     </ReactLenis>
   );
-}
+});
+WhatWeDo.displayName = 'WhatWeDo';
+
+export default WhatWeDo;
