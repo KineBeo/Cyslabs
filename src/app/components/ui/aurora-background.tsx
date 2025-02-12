@@ -1,10 +1,8 @@
 "use client";
 import { cn } from "@/src/lib/utils";
 import React, { ReactNode } from "react";
-import { SparklesCore } from "../ui/sparkles";
 import { Overlay } from "../threejs/Overlay";
 import { Scene } from "../threejs/Scene";
-import MacbookScene from "../mac3D/MacbookScene";
 import { EnhancedDogViewer } from "../dog/voxel-dog";
 
 interface SpaceBackgroundProps extends React.HTMLProps<HTMLDivElement> {

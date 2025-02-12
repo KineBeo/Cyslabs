@@ -2,8 +2,13 @@
 import React, { useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import RandomStarBackground from "../ui/random-start-background";
 import { cn } from "@/src/lib/utils";
+import dynamic from "next/dynamic";
+
+const RandomStarBackground = dynamic(() => import("../ui/random-start-background"), {
+  ssr: false,
+});
+
 
 // Define types for form data
 interface FormData {

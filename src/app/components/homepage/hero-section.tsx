@@ -1,10 +1,23 @@
 import React, { useMemo } from 'react';
 import { HeroSection } from "@/src/service/strapi/interface/section";
-import SwipeButton from "../animata/button/swipe-button";
-import MacbookScene from "../mac3D/MacbookScene";
-import AuroraBackground from "../ui/aurora-background";
 import { Tag } from "@/src/service/strapi/interface/content";
 import { Omit } from "@react-spring/web";
+import dynamic from 'next/dynamic';
+
+const MacbookScene = dynamic(() => import('../mac3D/MacbookScene'), {
+    ssr: false,
+    loading: () => <div className="h-screen bg-black" />
+});
+
+const SwipeButton = dynamic(() => import('../animata/button/swipe-button'), {
+    ssr: false,
+    loading: () => <div className="h-screen bg-black" />
+});
+
+const AuroraBackground = dynamic(() => import('../ui/aurora-background'), {
+    ssr: false,
+    loading: () => <div className="h-screen bg-black" />
+});
 
 // Optimized text splitting function
 const splitTextToArrays = (text: string) => {
@@ -64,8 +77,8 @@ export default function HeroSectionComponent({ props }: HeroSectionProps) {
             </AuroraBackground>
             <div className="desktop:top-96 laptop:top-80 mini-laptop:top-80 mobile:top-72 tablet:top-80 z-20 absolute flex justify-center w-full">
                 <div className="desktop:top-16 laptop:top-16 desktop:right-16 laptop:right-12 z-20 absolute">
-                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center font-semibold text-2xl text-black mobile:text-lg mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white mobile:text-center tablet:text-xl">
-                        <span className="underline text-blue-300 
+                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center mobile font-semibold text-2xl text-black mobile:text-lg mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white mobile:text-center tablet:text-xl">
+                        <span className="underline text-blue-300
               mobile:text-xl 
               tablet:text-2xl
               mini-laptop:text-2xl
@@ -74,9 +87,10 @@ export default function HeroSectionComponent({ props }: HeroSectionProps) {
                             Cyslabs
                         </span> is a cybersecurity squad keeping
                     </div>
-                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center mobile:text-center font-semibold text-2xl text-black mobile:text-lg tablet:text-xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white">
-                        data and privacy safe {tagString}
+                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center mobile:text-center mobile:px-2 font-semibold text-2xl text-black mobile:text-lg tablet:text-xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white ">
+                        data and privacy safe <br/> {tagString}
                     </div>
+
                     <div className="flex flex-row mini-laptop:justify-center mobile:justify-center tablet:justify-center gap-4 mt-4 font-semibold">
                         <SwipeButton
                             firstText="Join now"

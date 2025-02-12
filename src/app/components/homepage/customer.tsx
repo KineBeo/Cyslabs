@@ -6,7 +6,6 @@ import { CustomersSection } from "@/src/service/strapi/interface/section";
 // Dynamically import heavy components
 const RandomStarBackground = dynamic(() => import("../ui/random-start-background"), {
   ssr: false,
-  loading: () => <div className="h-screen bg-black" />,
 });
 
 // Memoize and optimize ProductItem component
