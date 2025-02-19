@@ -6,17 +6,17 @@ import dynamic from 'next/dynamic';
 
 const MacbookScene = dynamic(() => import('../mac3D/MacbookScene'), {
     ssr: false,
-    loading: () => <div className="h-screen bg-black" />
+    loading: () => <div className="bg-black h-screen" />
 });
 
 const SwipeButton = dynamic(() => import('../animata/button/swipe-button'), {
     ssr: false,
-    loading: () => <div className="h-screen bg-black" />
+    loading: () => <div className="bg-black h-screen" />
 });
 
 const AuroraBackground = dynamic(() => import('../ui/aurora-background'), {
     ssr: false,
-    loading: () => <div className="h-screen bg-black" />
+    loading: () => <div className="bg-black h-screen" />
 });
 
 // Optimized text splitting function
@@ -65,7 +65,7 @@ export default function HeroSectionComponent({ props }: HeroSectionProps) {
     return (
         <div className="relative w-full h-full overflow-hidden">
             <AuroraBackground>
-                <div className="desktop:top-48 laptop:top-56 mini-laptop:top-52 mobile:top-44 tablet:top-48 z-10 absolute">
+                <div className="tablet:top-48 desktop:top-48 laptop:top-56 mini-laptop:top-52 mobile:top-44 z-10 absolute">
                     <div className="desktop:justify-star laptop:justify-start mobile:justify-center tablet:justify-center font-bold text-foreground mobile:text-3xl tablet:text-3xl mini-laptop:text-5xl laptop:text-6xl desktop:text-8xl select-none">
                         {words1.map((word) => word.text).join(" ")}
                     </div>
@@ -75,23 +75,19 @@ export default function HeroSectionComponent({ props }: HeroSectionProps) {
                 </div>
                 <MacbookScene />
             </AuroraBackground>
-            <div className="desktop:top-96 laptop:top-80 mini-laptop:top-80 mobile:top-72 tablet:top-80 z-20 absolute flex justify-center w-full">
+            <div className="tablet:top-80 desktop:top-96 laptop:top-80 mini-laptop:top-80 mobile:top-72 z-20 absolute flex justify-center w-full">
                 <div className="desktop:top-16 laptop:top-16 desktop:right-16 laptop:right-12 z-20 absolute">
-                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center mobile font-semibold text-2xl text-black mobile:text-lg mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white mobile:text-center tablet:text-xl">
-                        <span className="underline text-blue-300
-              mobile:text-xl 
-              tablet:text-2xl
-              mini-laptop:text-2xl
-              laptop:text-3xl
-              desktop:text-4xl">
+                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center font-semibold text-black dark:text-white mobile:text-lg tablet:text-xl text-2xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl mobile:text-center mobile">
+                        <span className="text-blue-300 mobile:text-xl mini-laptop:text-2xl tablet:text-2xl laptop:text-3xl desktop:text-4xl underline">
                             Cyslabs
                         </span> is a cybersecurity squad keeping
                     </div>
-                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center mobile:text-center mobile:px-2 font-semibold text-2xl text-black mobile:text-lg tablet:text-xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl dark:text-white ">
-                        data and privacy safe <br/> {tagString}
+                    <div className="desktop:justify-start laptop:justify-start mobile:justify-center mobile:px-2 font-semibold text-black dark:text-white mobile:text-lg tablet:text-xl text-2xl mini-laptop:text-2xl laptop:text-3xl desktop:text-3xl mobile:text-center">
+                        data and privacy safe <br /> {tagString}
                     </div>
 
-                    <div className="flex flex-row mini-laptop:justify-center mobile:justify-center tablet:justify-center gap-4 mt-4 font-semibold">
+                    {/* Button */}
+                    {/* <div className="flex flex-row mini-laptop:justify-center mobile:justify-center tablet:justify-center gap-4 mt-4 font-semibold">
                         <SwipeButton
                             firstText="Join now"
                             secondText="Sign up"
@@ -114,7 +110,7 @@ export default function HeroSectionComponent({ props }: HeroSectionProps) {
                 mobile:text-base
                 tablet:text-lg"
                         />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -9,19 +9,20 @@ const RandomStarBackground = dynamic(() => import("../ui/random-start-background
 });
 
 // Memoize and optimize ProductItem component
-const ProductItem = memo<{ title: string; type: string }>(({ title, type }) => (
+const ProductItem = memo<{ title: string; type: string, url?: string }>(({ title, type, url }) => (
   <>
     <div
-      className="relative mini-laptop:mx-8 before:z-[-1] before:absolute before:inset-0 before:bg-cyan-700 mx-20 mobile:mx-4 tablet:mx-4 px-2 py-4 before:origin-bottom transition-all before:transition-transform duration-200 before:duration-200 cursor-pointer before:scale-y-0 ease-in-out hover:before:scale-y-100"
+      className="tablet:mx-4 mini-laptop:mx-8 before:z-[-1] before:absolute relative before:inset-0 before:bg-cyan-700 mx-20 mobile:mx-4 px-2 py-4 before:scale-y-0 hover:before:scale-y-100 before:origin-bottom transition-all before:transition-transform duration-200 before:duration-200 ease-in-out cursor-pointer"
+      onClick={() => window.open(`url`)}
     >
-      <div className="relative z-10 flex justify-between mini-laptop:gap-16 mobile:gap-12 tablet:gap-16 hover:px-2 transition-all">
-        <p className="group-hover:text-white font-bold mobile:text-xl tablet:text-xl mini-laptop:text-xl text-2xl text-white">
+      <div className="tablet:gap-16 z-10 relative flex justify-between mini-laptop:gap-16 mobile:gap-12 hover:px-2 transition-all">
+        <p className="group-hover:text-white font-bold text-white mini-laptop:text-xl mobile:text-xl tablet:text-xl text-2xl">
           {title}
         </p>
         <p className="group-hover:text-white text-white mobile:text-lg text-xl">{type}</p>
       </div>
     </div>
-    <div className="bg-slate-500 mx-20 mobile:mx-4 tablet:mx-4 mini-laptop:mx-8 px-2 h-0.5" />
+    <div className="tablet:mx-4 mini-laptop:mx-8 bg-slate-500 mx-20 mobile:mx-4 px-2 h-0.5" />
   </>
 ));
 ProductItem.displayName = 'ProductItem';
@@ -45,6 +46,7 @@ export default function Customer({ props }: CustomerProps) {
         key={product.id}
         title={product.name}
         type={product.type}
+        url={product.url}
       />
     )),
     [props.customers]
@@ -57,7 +59,7 @@ export default function Customer({ props }: CustomerProps) {
     >
       <div className="gap-8 grid grid-cols-5 mobile:grid-cols-1 tablet:grid-cols-1 px-12 mobile:px-0 pb-40 h-fit">
         <div className="flex flex-col col-span-2 mx-auto w-full">
-          <div className="ml-4 w-full font-extrabold text-4xl text-white desktop:text-7xl laptop:text-5xl p-10 border-blue-500 border-l-4">
+          <div className="ml-4 p-10 border-blue-500 border-l-4 w-full font-extrabold text-white text-4xl laptop:text-5xl desktop:text-7xl">
             {words.map((word, index) => (
               <div key={index} className="mobile:text-center tablet:text-center">
                 {word}
@@ -65,7 +67,7 @@ export default function Customer({ props }: CustomerProps) {
             ))}
           </div>
         </div>
-        <div className="flex flex-col col-span-3 mobile:place-self-start p-10">
+        <div className="flex flex-col mobile:place-self-start col-span-3 p-10">
           {customerItems}
         </div>
       </div>
