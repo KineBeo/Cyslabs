@@ -9,10 +9,10 @@ const MacbookScene = dynamic(() => import('../mac3D/MacbookScene'), {
     loading: () => <div className="bg-black h-screen" />
 });
 
-const SwipeButton = dynamic(() => import('../animata/button/swipe-button'), {
-    ssr: false,
-    loading: () => <div className="bg-black h-screen" />
-});
+// const SwipeButton = dynamic(() => import('../animata/button/swipe-button'), {
+//     ssr: false,
+//     loading: () => <div className="bg-black h-screen" />
+// });
 
 const AuroraBackground = dynamic(() => import('../ui/aurora-background'), {
     ssr: false,
