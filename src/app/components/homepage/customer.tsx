@@ -13,7 +13,7 @@ const ProductItem = memo<{ title: string; type: string, url?: string }>(({ title
   <>
     <div
       className="tablet:mx-4 mini-laptop:mx-8 before:z-[-1] before:absolute relative before:inset-0 before:bg-cyan-700 mx-20 mobile:mx-4 px-2 py-4 before:scale-y-0 hover:before:scale-y-100 before:origin-bottom transition-all before:transition-transform duration-200 before:duration-200 ease-in-out cursor-pointer"
-      onClick={() => window.open(`url`)}
+      onClick={() => window.open(`${url}`)}
     >
       <div className="tablet:gap-16 z-10 relative flex justify-between mini-laptop:gap-16 mobile:gap-12 hover:px-2 transition-all">
         <p className="group-hover:text-white font-bold text-white mini-laptop:text-xl mobile:text-xl tablet:text-xl text-2xl">
